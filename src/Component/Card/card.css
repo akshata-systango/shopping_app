@@ -1,0 +1,10 @@
+.displayButtons{
+    display: flex;
+    justify-content: space-around;
+}
+.availabilityMessage{
+    color: green;
+}
+.button-styling{
+    padding: 5px 40px;
+}

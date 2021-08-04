@@ -1,6 +1,6 @@
 .card{
     width:14rem;
-    margin-top: 30px;
+  margin-top: 20px;
 }
 .heading-three{
     /* font-weight: 1rem; */
@@ -29,3 +29,47 @@ p{
    margin-left: 10px;
 
 }
+.installButton{
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 30px;
+    width:100px;
+}
+/* .shop{
+    position: absolute;
+    width: 32px;
+    height: 16px;
+    left: 545px;
+    top: 27px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+    
+    color: #000000;
+    
+} */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+  color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
