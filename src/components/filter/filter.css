@@ -1,0 +1,106 @@
+.filters{
+    position: absolute;
+width: 64px;
+height: 19px;
+left: 24px;
+top: 235px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+text-transform: capitalize;
+
+color: #000000;
+}
+.btn{
+position: absolute;
+width: 115px;
+height: 42px;
+left: 103px;
+top: 224px;
+
+border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+}
+.btn1{
+    position: absolute;
+    width: 92px;
+    height: 42px;
+    left: 226px;
+    top: 224px;
+
+border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+}
+.btn2{
+    position: absolute;
+    width: 75px;
+    height: 42px;
+    left: 326px;
+    top: 224px;
+    
+border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+}
+.btn3{
+    position: absolute;
+    width: 100px;
+    height: 42px;
+    left: 409px;
+    top: 224px;
+
+border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+}
+.btn4{
+    position: absolute;
+    width: 115px;
+    height: 42px;
+    left: 509px;
+    top: 224px;
+
+border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+    
+}
+.btn5{
+    position: absolute;
+    width: 65px;
+    height: 42px;
+    left: 632px;
+    top: 224px;
+
+    border: 1px solid #C4C4C4;
+box-sizing: border-box;
+border-radius: 52px;
+}
+.btn6{
+    position: absolute;
+    width: 200px;
+    height: 42px;
+    left: 1100px;
+    top: 224px;
+    
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 62px;
+}
+.gap{
+
+position: absolute;
+width: 1390px;
+height: 0px;
+left: 25px;
+top: 292px;
+
+border: 1px solid #E5E5E5;
+}
