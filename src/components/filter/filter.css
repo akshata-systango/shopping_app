@@ -3,7 +3,7 @@
 width: 64px;
 height: 19px;
 left: 24px;
-top: 235px;
+top: 238px;
 
 font-family: Roboto;
 font-style: normal;
@@ -16,7 +16,7 @@ text-transform: capitalize;
 
 color: #000000;
 }
-.btn{
+.btn7{
 position: absolute;
 width: 115px;
 height: 42px;
@@ -62,9 +62,9 @@ border-radius: 52px;
 }
 .btn4{
     position: absolute;
-    width: 115px;
+    width: 110px;
     height: 42px;
-    left: 509px;
+    left: 514px;
     top: 224px;
 
 border: 1px solid #C4C4C4;

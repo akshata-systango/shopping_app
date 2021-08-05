@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './card.css';
 
+
 import { useDispatch, useSelector } from 'react-redux';
 
 const Card = (props) => {
+    console.log("image src:-", props.category);
     const showState = useSelector(state => state.showToggler);
     const [showButton, setShowButton] = useState(false);
     const dispetch = useDispatch();
@@ -25,7 +27,9 @@ const Card = (props) => {
             <div className="card" >
             <div className="card-body" >
                 <img className="card-img-top" src={props.imgsrc} alt="Cant load" />
+              
                     <h6 className="card-text" onMouseOver={onToggleHandler}>{props.brand}</h6>
+                    <p className="category">{props.category}</p>
                     <p className="card-title">{props.detail}</p>
                     
                     {showState &&

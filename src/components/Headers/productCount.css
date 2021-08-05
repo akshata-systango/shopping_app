@@ -2,8 +2,8 @@
     position: absolute;
 width: 235px;
 height: 23px;
-left: 24px;
-top: 174px;
+left: 22px;
+top: 168px;
 
 font-family: Roboto;
 font-style: normal;
@@ -11,6 +11,19 @@ font-weight: bold;
 font-size: 20px;
 line-height: 23px;
 text-transform: capitalize;
+display: flex;
+justify-content: space-around;
 
 color: #000000;
 }
+.pCount{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 23px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+    
+    color:grey;
+ }
