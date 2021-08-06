@@ -1,0 +1,12 @@
+.searchInput{
+    display: flex;
+}
+.close{
+    width: 150px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+}

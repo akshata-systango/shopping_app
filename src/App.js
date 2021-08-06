@@ -1,27 +1,21 @@
 import React from 'react';
-import Header from './components/Headers/Header';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Refferal from './components/Headers/Refferal';
-import ProductCount from './components/Headers/ProductCount';
-import Filter from './components/filter/Filter';
-import UrlLine from './components/Headers/UrlLine';
-import Product from './components/Headers/Product';
-import Contact from './components/Headers/Contact';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Main from './Main';
+// import Contact from './components/Headers/Contact/Contact';
+// import About from './components/Headers/aboutUs/About';
+// import OurStore from './components/Headers/ourStore/OurStore';
 
 
 const App = () => {
   return (
     <Router>
-      <Header>
-        <Route path="/contact" component={Contact} />
-      </Header>
-          <Refferal />
-          <UrlLine />
-          <ProductCount />
-          <Filter />
-          <Product />
-          
-      </Router>
+      <Main />
+      <Switch>
+        {/* <Route path="/contact" component={Contact} /> */}
+        {/* <Route path="/about" component={AboutUs} /> */}
+        {/* <Route path="/store" component={OurStore} /> */}
+      </Switch>
+    </Router>
 
 
   )

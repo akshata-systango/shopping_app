@@ -1,133 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import Card from '../Card/Card';
-import data from '../Card/data';
+import data from '../../constants/data';
 import './filter.css';
-// import MapCard from '../Card/MapCard';
-// import Product from '../Headers/Product';
+import MapCard from '../Card/MapCard';
+import Product from '../Product/Product';
+import ProductCount from '../ProductCount/ProductCount';
 
 
 
-let text = [];
-const Filter = (props) => {
-    var i;
 
-
+const Filter = () => {
+    let [allProduct, setAllProduct] = useState([]);
+    let [count,setCount] = useState(0);
     const showAllItemHandler = () => {
-        console.log("abc",data)
+        setAllProduct(
+            allProduct = data.filter((item) => {
+                return (item.category === 'tshirt' || item.category === 'hoodie' || item.category === 'sweatShirt' || item.category === 'tees' || item.category === 'shirt')
+            })
+        )
+        setCount(
+            count = allProduct.length
+        )
+
+        console.log('All Product', allProduct)
     }
 
-    const showTshirtHandler = (props) => {
-        // console.log("tshirt Handler", data);
-        for (let i in data) {
-            if (data[i].category === 'tshirt') {
-                text.push(
-                    {
-                        imgsrc: data[i].imgsrc,
-                        brand: data[i].brand,
-                        category: data[i].category,
-                        detail: data[i].detail,
-                        price: data[i].price
+    const showTshirtHandler = () => {
+        setAllProduct(
+            allProduct = data.filter((item) => {
+                return item.category === 'tshirt'
+            }))
 
-                    })
-
-            }
-
-        }
-        console.log(text)
+        console.log("T-shirts", allProduct)
 
     }
 
 
     const showDenimHandler = () => {
-        console.log("denim Handler");
-        text.length = 0
-        for (let i in data) {
-          
-            if (data[i].category === 'hoodie') {
-                //  console.log(data[i].detail,data[i].imgsrc,data[i].brand)
-                text.push(
-                    {
-                        imgsrc: data[i].imgsrc,
-                        brand: data[i].brand,
-                        category: data[i].category,
-                        detail: data[i].detail,
-                        price: data[i].price
+        setAllProduct(
+            allProduct = data.filter((item) => {
+            return item.category === 'hoodie'
+        }))
 
-                    })
-            }
-        }
-        console.log(text)
+        console.log("Denim", allProduct)
+
+
     }
+    // console.log(text)
+
     const showSsHandler = () => {
-        text.length = 0
-        console.log("sweatshirt Handler");
-        for (let i in data) {
-            if (data[i].category === 'sweatShirt') {
-                // 
-                text.push(
-                    {
-                        imgsrc: data[i].imgsrc,
-                        brand: data[i].brand,
-                        category: data[i].category,
-                        detail: data[i].detail,
-                        price: data[i].price
+        setAllProduct(
+            allProduct = data.filter((item) => {
+                return item.category === 'sweatShirt'
+            })
+        )
 
-                    })
-            }
-        }
-        console.log(text)
+        console.log("Sweat-Shirt", allProduct)
+
     }
+    // console.log(text)
+
     const showTeesHandler = () => {
-        text.length = 0
-        console.log("t Handler");
-        for (let i in data) {
-            if (data[i].category === 'tees') {
-                // 
-                text.push(
-                    {
-                        imgsrc: data[i].imgsrc,
-                        brand: data[i].brand,
-                        category: data[i].category,
-                        detail: data[i].detail,
-                        price: data[i].price
+        setAllProduct(
+            allProduct = data.filter((item) => {
+                return item.category === 'tees'
+            }))
 
-                    })
-            }
-        }
-        console.log(text)
+        console.log("Polo-Tees", allProduct)
+
     }
+    // console.log(text)
+
     const showShirtHandler = () => {
-        text.length = 0
-        console.log("shirt Handler");
-        for (let i in data) {
-            if (data[i].category === 'shirt') {
-                // 
-                text.push(
-                    {
-                        imgsrc: data[i].imgsrc,
-                        brand: data[i].brand,
-                        category: data[i].category,
-                        detail: data[i].detail,
-                        price: data[i].price
+        setAllProduct(
+            allProduct = data.filter((item) => {
+                return item.category === 'shirt'
+            })
+        )
 
-                    })
-            }
-        }
-        console.log(text)
+        console.log("Shirts", allProduct)
+
+
     }
-
+    // console.log(text)
     return (
         <React.Fragment>
             <div className="flexContainer">
                 <div id="filtering">
                     <p className="filters">  FILTERS: </p>
                     <button type="button" className="btn7" onClick={showAllItemHandler}>All Products</button>
-                    <button type="button" className="btn1" onClick={showTshirtHandler}>Tee Shirt</button>
-
+                   
+                    <button type="button" className="btn1" onClick={showTshirtHandler}>T-Shirt</button>
+                    
                     <button type="button" className="btn2" onClick={showDenimHandler}>Denim</button>
+    
                     <button type="button" className="btn3" onClick={showSsHandler}>Sweatshirts</button>
+                
                     <button type="button" className="btn4" onClick={showTeesHandler}>Polo Tees</button>
+                    
                     <button type="button" className="btn5" onClick={showShirtHandler}> Shirt </button>
+                    {allProduct && <Product>{allProduct.map(MapCard)}</Product>}
+                    {count && <ProductCount>{count}</ProductCount>}
+                  
+
+
 
                     <button type="button" class="btn6" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">sort By : High To Low</button>
                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -144,4 +120,4 @@ const Filter = (props) => {
 };
 
 export default Filter;
-export { text };
+
