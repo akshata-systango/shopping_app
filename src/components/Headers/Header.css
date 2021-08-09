@@ -1,0 +1,148 @@
+
+.sysImage{
+  position: absolute;
+width: 200px;
+height: 50px;
+left: 18px;
+top: 10px;
+
+/* background: url(image.png); */
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.03));
+}
+
+.ractangle1{
+  position: absolute;
+width: 1440px;
+height: 70px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+}
+.productCount{
+    margin-top: 20px;
+}
+.displayCard{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+.installButton{
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 30px;
+    width:100px;
+}
+.shop{
+    position: absolute;
+    width: 55px;
+    height: 19px;
+    left: 500px;
+    top: 15px;
+    background-color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+    
+    color: black;
+    
+}
+.aboutUs{
+  position: absolute;
+width: 58px;
+height: 16px;
+left: 619px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+text-transform: capitalize;
+
+color:black;
+
+}
+.ourStore{
+  position: absolute;
+width: 66px;
+height: 16px;
+left: 719px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+text-transform: capitalize;
+
+color: black;
+}
+.contactUs{
+  position: absolute;
+width: 69px;
+height: 16px;
+left: 827px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+text-transform: capitalize;
+text-decoration: none;
+
+}
+.vector{
+  position: absolute;
+  /* left: 88.67%; */
+  right: 15.68%;
+  top: 17.6%;
+  bottom: 15.67%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+.vector1{
+  position: absolute;
+  left: 90%;
+  right: 24%;
+  top: 16.33%;
+  bottom: 16.33%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+.vector2{
+
+  position: absolute;
+  left: 86.5%;
+  right: 10.07%;
+  top: 18.27%;
+  bottom: 35.27%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+
+.cartBtn{
+  display: flex;
+}
+span{
+  color: #000;
+}
