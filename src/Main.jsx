@@ -8,7 +8,7 @@ import Product from './components/Product/Product';
 import data from './constants/data';
 import MapCard from './components/Card/MapCard';
 import CartItem from './components/Headers/cart/CartItem';
-import CartContext from './store/CartContext';
+// import CartContext from './store/CartContext';
 import CartProvider from './store/CartProvider';
 
 const Main = (props) => {

@@ -12,12 +12,12 @@ import ProductCount from '../ProductCount/ProductCount';
 const Filter = (props) => {
     let [allProduct, setAllProduct] = useState([]);
     let [count, setCount] = useState(0);
-    let [sortPrice,setSortPrice] = useState([])
+    let [sortPrice, setSortPrice] = useState([])
 
 
 
     const showAllItemHandler = () => {
-        
+
         setAllProduct(
             allProduct = data.filter((item) => {
                 return (item.category === 'tshirt' || item.category === 'hoodie' || item.category === 'sweatShirt' || item.category === 'tees' || item.category === 'shirt')
@@ -27,10 +27,10 @@ const Filter = (props) => {
         setCount(
             count = allProduct.length
         )
-      
+
 
         console.log('All Product', allProduct)
-       
+
     }
 
     const showTshirtHandler = () => {
@@ -41,7 +41,7 @@ const Filter = (props) => {
         setCount(
             count = allProduct.length
         )
-        
+
 
 
         console.log("T-shirts", allProduct)
@@ -57,7 +57,7 @@ const Filter = (props) => {
         setCount(
             count = allProduct.length
         )
-       
+
 
 
         console.log("Denim", allProduct)
@@ -112,25 +112,25 @@ const Filter = (props) => {
     const PriceHighToLowHandler = () => {
         setSortPrice(
             sortPrice = allProduct.sort(
-                (a,b) => {
+                (a, b) => {
                     return b.price - a.price
                 }
-            )  
+            )
         )
-        console.log('product detail' , sortPrice)
-      
-        
+        console.log('product detail', sortPrice)
+
+
     }
     const PriceLowToHighHandler = () => {
         setSortPrice(
             sortPrice = allProduct.sort(
-                (a,b) => {
+                (a, b) => {
                     return a.price - b.price
                 }
-            )  
+            )
         )
-        console.log('product detail' , sortPrice)
-      
+        console.log('products', sortPrice)
+
 
     }
 
@@ -154,26 +154,26 @@ const Filter = (props) => {
                 <label class="dropdown">
 
                     <div class="dd-button">
-                     <span className="filterText">Filter: Price</span>  
+                        <span className="filterText">Filter: Price</span>
                     </div>
 
                     <input type="checkbox" class="dd-input" id="test" />
 
-                        <ul class="dd-menu">
-                            <li onClick={PriceHighToLowHandler}>High To Low</li>
-                            <li onClick={PriceLowToHighHandler}>Low To High</li>
-                        </ul>
+                    <ul class="dd-menu">
+                        <li onClick={PriceHighToLowHandler}>High To Low</li>
+                        <li onClick={PriceLowToHighHandler}>Low To High</li>
+                    </ul>
                 </label>
-                    
-                    {allProduct && <Product>{allProduct.map(MapCard)}</Product>}
-                    {count && <ProductCount>({count} Product)</ProductCount>}
-                   
+
+                {allProduct && <Product>{allProduct.map(MapCard)}</Product>}
+                {count && <ProductCount>({count} Product)</ProductCount>}
+
             </div>
-                <p className="gap"></p>
+            <p className="gap"></p>
         </React.Fragment>
-            )
+    )
 
 };
 
-            export default Filter;
+export default Filter;
 
