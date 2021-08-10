@@ -14,7 +14,7 @@ import CartProvider from './store/CartProvider';
 const Main = (props) => {
     const [showFullData, setShowFullData] = useState(true);
     // const [count,setCount] = useState(0);
-    const [showcartItem, setShowCartItem] = useState(false);
+    const [showcartItem, setShowCartItem] = useState(true);
     const hideInitialData = () => {
         setShowFullData(false);
     }
