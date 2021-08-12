@@ -1,50 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './card.css';
+import CartItemForm from './CartItemForm';
+import CartContext from '../../store/CartContext';
 
 
+import 'react-toastify/dist/ReactToastify.css';
+// import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
-import { useDispatch, useSelector } from 'react-redux';
 
 const Card = (props) => {
-    console.log("image src:-", props.category);
-    const showState = useSelector(state => state.showToggler);
-    const [showButton, setShowButton] = useState(false);
-    const dispetch = useDispatch();
 
-    const onToggleHandler = () => {
-        dispetch({ type: 'show' });
-    }
-    
-    const showAddToCartButton = () => {
-        setShowButton(true);
-    }
+    const cartCtx = useContext(CartContext);
+    // console.log("image src:-", props.category);
+    // const showState = useSelector(state => state.showToggler);
+    // const [showButton, setShowButton] = useState(false);
+    const [increseCount, setIncreaseCount] = useState(0);
+    // const dispetch = useDispatch();
 
-    const AddToCartButtonHandler = () =>{
-        
+    toast.configure();
+
+    // const onToggleHandler = () => {
+    //     dispetch({ type: 'show' });
+    // }
+
+    // const showAddToCartButton = () => {
+    //     setShowButton(true);
+
+    // }
+
+    const addToCartHandler = (amount) => {
+        setIncreaseCount(increseCount + 1)
+        setTimeout(() => { toast("item added 😎") }, 300);
+        cartCtx.AddItem({
+            id: props.id,
+            brand: props.brand,
+            amount: amount,
+            detail: props.detail,
+            category: props.category,
+            price: props.price,
+        })
     }
 
     return (
         <React.Fragment>
             <div className="card" >
-            <div className="card-body" >
-                <img className="card-img-top" src={props.imgsrc} alt="Cant load" />
-              
-                    <h6 className="card-text" onMouseOver={onToggleHandler}>{props.brand}</h6>
+                <div className="card-body" >
+
+                    <img className="card-img-top" src={props.imgsrc} alt="Cant load" />
+                    <h6 className="card-text">{props.brand}</h6>
                     <p className="category">{props.category}</p>
-                    <p className="card-title">{props.detail}</p>
-                    
-                    {showState &&
+                    <p className="card-title title1">{props.detail}</p>
+                    <p className="card-title">${props.price}</p>
                     <div>
-                         {showButton ? <input type="button" value="Add to Cart" onClick={AddToCartButtonHandler}/> :
+                        <CartItemForm id={props.id} onAddToCart={addToCartHandler} />
+                    </div>
+
+                    {/* {showState &&
+                    <div>
+                         {showButton ? <input type="button" value="Add to Cart" onClick={AddToCartButtonHandler} className="changeColor"/> :
                        <div> <p>Select size</p>
                         <div className="size">
-                        <input type="button" value="38" onClick={showAddToCartButton}/>
-                        <input type="button" value="39" onClick={showAddToCartButton}/>
-                        <input type="button" value="40" onClick={showAddToCartButton}/>
-                        <input type="button" value="42" onClick={showAddToCartButton}/>
-                        <input type="button" value="44" onClick={showAddToCartButton}/></div></div>}
+                        <input type="button" value="38" onClick={showAddToCartButton} className="size" />
+                       
+                        <input type="button" value="39" onClick={showAddToCartButton} className="size"/>
+                        <input type="button" value="40" onClick={showAddToCartButton} className="size"/>
+                        <input type="button" value="42" onClick={showAddToCartButton} className="size"/>
+                        <input type="button" value="44" onClick={showAddToCartButton} className="size"/></div></div>}
                      <div className="availabilityMessage"> Sizes: XS,S,M,L,XL,XXL </div></div>}
-                    <p className="card-price">{props.price}</p>
+                    
+                    <p className="card-price">${props.price}</p> */}
 
 
 

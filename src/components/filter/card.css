@@ -19,7 +19,7 @@ height: 349px;
 left: 25px;
 top: 317px;
 }
-input{
+.size{
     height: 35px;
     border-radius: 30px;
     margin: 2px;
@@ -30,21 +30,48 @@ input{
     line-height: 16px;
     text-transform: capitalize;
     justify-content: space-between;
+} 
+
+/* .changeColor { 
+    color: white;
+    font-weight: bolder;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  background-size: 1800% 1800%;
+  
+  -webkit-animation: rainbow 18s ease infinite;
+  -z-animation: rainbow 18s ease infinite;
+  -o-animation: rainbow 18s ease infinite;
+    animation: rainbow 18s ease infinite;}
+  
+  @-webkit-keyframes rainbow {
+      0%{background-position:0% 82%}
+      50%{background-position:100% 19%}
+      100%{background-position:0% 82%}
+  }
+  @-moz-keyframes rainbow {
+      0%{background-position:0% 82%}
+      50%{background-position:100% 19%}
+      100%{background-position:0% 82%}
+  }
+  @-o-keyframes rainbow {
+      0%{background-position:0% 82%}
+      50%{background-position:100% 19%}
+      100%{background-position:0% 82%}
+  }
+  @keyframes rainbow { 
+      0%{background-position:0% 82%}
+      50%{background-position:100% 19%}
+      100%{background-position:0% 82%}
+  } */
+
+.amountCount{
+    display: flex;
+    justify-content: space-between;
 }
-/* input{
-position: absolute;
-width: 16px;
-height: 16px;
-left: 1179px;
-top: 1627px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 16px;
-text-transform: capitalize;
-
-color: #000000;
-
-} */
+.title1{
+    height:48px;
+    font-size: 15px;
+}
+.category{
+    color: grey;
+}

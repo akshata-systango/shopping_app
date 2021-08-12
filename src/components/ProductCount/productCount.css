@@ -1,29 +1,38 @@
+
 .productCount{
-    position: absolute;
-width: 235px;
-height: 23px;
-left: 22px;
-top: 168px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 23px;
-text-transform: capitalize;
-display: flex;
-justify-content: space-around;
-
-color: #000000;
-}
-.pCount{
-    font-family: Roboto;
-    font-style: normal;
-    font-size: 20px;
-    line-height: 23px;
-    text-transform: capitalize;
     display: flex;
     justify-content: space-around;
     
-    color:grey;
- }
+    }
+    .pCount{
+    position: absolute;
+    width: 235px;
+    height: 23px;
+    left: 150px;
+    top: 180px;
+    
+    font-family: Roboto;
+    line-height: 23px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;  
+       
+    text-transform: capitalize; 
+        color:grey; 
+     } 
+    .productStyling{
+    position: absolute;
+    width: 235px;
+    height: 23px;
+    left: 22px;
+    top: 180px;
+    
+    font-family: Roboto;
+    line-height: 23px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;  
+       
+    text-transform: capitalize; 
+    }

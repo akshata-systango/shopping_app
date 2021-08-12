@@ -1,13 +1,13 @@
 import React from 'react';
 import './Header.css';
 import systangoLogo from '../../assets/images/Rectangle.svg';
-import verctorLogo from '../../assets/images/Vector.svg';
-import verctor1Logo from '../../assets/images/Vector1.svg';
 import { Link } from 'react-router-dom';
 import Search from './Icons/Search';
+import Cart from './cart/Cart';
+import Account from './accounts/Accounts';
 
 
-const Header = () => {
+const Header = (props) => {
 
     return (
         <React.Fragment>
@@ -32,8 +32,8 @@ const Header = () => {
                     <div className="ourStore"><Link to="/store"><span> Our Store </span></Link></div>
 
 
-                    <div className="vector"><img src={verctorLogo} /></div>
-                    <div className="vector1"><img src={verctor1Logo} /></div>
+                    <div className="vector"><Account/></div>
+                    <div className="vector1" onClick={props.onShow}><Cart/></div>
                     <div className="vector2"><Search/></div>
                 </div>
 

@@ -6,8 +6,8 @@ const ProductCount = (props) => {
     return (
         <React.Fragment>
             <div className="productCount">
-                <p>All Products</p>
-                <h6 className="pCount">({props.children} Products)</h6>
+                <p className="productStyling">All Products</p>
+                <h6 className="pCount">{props.children}</h6>
             </div>
 
         </React.Fragment>
