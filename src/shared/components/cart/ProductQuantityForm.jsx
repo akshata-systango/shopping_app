@@ -3,7 +3,7 @@ import './style/cart.css';
 import Input from '../../../components/UI/Input';
 
 
-const CartItemForm = (props) => {
+const AddProductQuantity = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
@@ -47,4 +47,4 @@ const CartItemForm = (props) => {
   );
 };
 
-export default CartItemForm;
+export default AddProductQuantity;

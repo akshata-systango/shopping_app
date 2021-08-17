@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import data from '../../constants/data';
 import './style/product.css';
-import Card from '../../shared/components/cardModal/Card';
+import Card from '../../shared/components/ProductCard/Card';
 const ShowAllProducts = (props) => {
 
     const [product, setProduct] = useState([]);
@@ -25,11 +25,8 @@ const ShowAllProducts = (props) => {
         fetchProducts()
     }, []);
 
-    console.log('All Products are:-', product)
+    // console.log('All Products are:-', product)
 
-    // const initialCount = product.length;
-    // console.log('initialCount', initialCount)
-    
     let [allProduct, setAllProduct] = useState([]);
     let [count, setCount] = useState();
 
@@ -109,7 +106,7 @@ const ShowAllProducts = (props) => {
 
     return (
         <React.Fragment>
-            <div className="flexContainer" onClick={props.onPush}>
+            <div className="flexContainer">
 
                 <p className="filters">  FILTERS: </p>
                 <button type="button" className="btn7" onClick={showAllItemHandler} onHiding={props.onHide}>All Products</button>
