@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import './card.css';
+import './style/card.css';
 import CartItemForm from '../cart/CartItemForm';
 import CartContext from '../../../store/CartContext';
 import 'react-toastify/dist/ReactToastify.css';
