@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 import Header from '../components/Headers/Index';
 
 const ShowAllProducts = React.lazy(() => import('../components/Product/Index'));
