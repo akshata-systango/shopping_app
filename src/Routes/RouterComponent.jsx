@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Suspense } from "react";
 import Header from "../components/Headers/Index";
 import Cart from "../shared/components/cart/CartComponent";
+import Breadcrumbs from "../utils/Breadcrumbs/BreadCrumbsComponent";
 
 const ShowAllProducts = React.lazy(() => import("../components/Product/Index"));
 // const Cart = React.lazy(() =>
@@ -21,6 +22,7 @@ const Routes = () => {
     <>
       <Header onCartIconClick={ShowCartDetails} />
       {showcartItem && <Cart onClose={HideCartDetails} />}
+      <Breadcrumbs/>
       <Switch>
         <Suspense fallback={<div>Loading...</div>}>
           <Route exact path="/" component={ShowAllProducts} />

@@ -4,6 +4,7 @@ import systangoLogo from "../../assets/images/Rectangle.svg";
 import { Link } from "react-router-dom";
 import searchImage from "../../assets/images/Vector2.svg";
 import cartImage from "../../assets/images/Vector1.svg";
+import profileImage from "../../assets/images/Vector.svg";
 import CartContext from "../../store/CartContext";
 
 const Header = (props) => {
@@ -29,41 +30,17 @@ const Header = (props) => {
         <div>
           <img src={systangoLogo} alt="can't load" className="sysImage" />
           <div className="shop">
-            <div className="dropdown">
-              <a
-                className="btn btn-light dropdown-toggle"
-                href="#"
-                role="button"
-                id="dropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Shop
-              </a>
-
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a className="dropdown-item" href="#">
-                  Mens
-                </a>
-                <a className="dropdown-item" href="#">
-                  Womens
-                </a>
-                <a className="dropdown-item" href="#">
-                  Kids
-                </a>
-              </div>
-            </div>
+            <Link to="/shop">
+              <span>Shop</span>
+            </Link>
           </div>
           <div className="aboutUs">
             <Link to="/about">
-              {" "}
               <span>About us </span>
             </Link>
           </div>
           <div className="contactUs">
             <Link to="/contact">
-              {" "}
               <span>Contact Us</span>
             </Link>
           </div>
@@ -79,6 +56,12 @@ const Header = (props) => {
             <div className="cart">
               <img src={cartImage} alt="can't load" />
               <span className="itemCount"> {numberOfCartItems}</span>
+            </div>
+          </div>
+          {/* user profile section*/}
+          <div className="vector">
+            <div className="userProfile">
+              <img src={profileImage} alt="can't load" />
             </div>
           </div>
 

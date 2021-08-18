@@ -46,21 +46,14 @@
     background-color: #8a2b06;
     color: white;
   }
-  .stylingInput{
-    width: 30px;
-    height: 25px;
-    border: 2px solid brown; 
-    margin-left: 90px;
-}
+  
 /* .cartButton{
    background-color: white;
    
     border: 2px solid brown;
     border-radius: 52px;
 } */
-.form {
-   align-content: center;
-  }
+
   
   .form button {
     font: inherit;

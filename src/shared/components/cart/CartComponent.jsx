@@ -4,7 +4,7 @@ import './style/cart.css';
 // import 'bootstrap/dist/css/bootstrap.css';
 import CartItems from './ShowCartComponent';
 import CartContext from '../../../store/CartContext';
-import CheckOut from './Checkout';
+import CheckOutDetailForm from '../../../components/CartCheckout/CheckoutForm';
 // import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const Cart = (props) => {
@@ -52,11 +52,11 @@ const Cart = (props) => {
         {cartItem}
 
         <div className="total">
-          <div>
+          <div className="final">
             <span className="amount">Amount</span>
             <span className="price">{totalAmount}</span>
           </div>
-          {orderPlaced && <CheckOut onCancel={props.onClose}/>}
+          {orderPlaced && <CheckOutDetailForm onCancel={props.onClose}/>}
           {!orderPlaced && hideButtons}
           
         </div>

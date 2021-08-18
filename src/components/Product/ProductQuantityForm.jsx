@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-import './style/cart.css';
-import Input from '../../../components/UI/Input';
+import './style/product.css';
+import Input from '../UI/Input';
 
 
 const AddProductQuantity = (props) => {

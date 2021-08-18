@@ -1,0 +1,28 @@
+.detailform{
+height: 17rem;
+overflow: auto;
+justify-content: left;
+}
+.username{
+    justify-content: left;
+}
+.uname{
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+.address{
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+.city{
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+.contact{
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+.pcode{
+    border-radius: 10px;
+    margin: 0.5rem;
+}

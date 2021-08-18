@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./style/card.css";
-import AddProductQuantity from "../cart/ProductQuantityForm";
+import AddProductQuantity from "../../../components/Product/ProductQuantityForm";
 import CartContext from "../../../store/CartContext";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
@@ -24,9 +24,13 @@ const Card = (props) => {
   };
 
   const addToCartHandler = (amount) => {
-    setTimeout(() => {
-      toast("item added 😎");
-    }, 300);
+    // setTimeout(() => {
+    //   toast("item added 😎");
+    // }, 300);
+    toast.info("Item added to cart !", {
+      position: toast.POSITION.BOTTOM_CENTER,
+      draggablePercent: 60
+    });
     cartCtx.AddItem({
       id: props.id,
       brand: props.brand,
