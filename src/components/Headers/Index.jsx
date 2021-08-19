@@ -7,7 +7,6 @@ import cartImage from "../../assets/images/Vector1.svg";
 import profileImage from "../../assets/images/Vector.svg";
 import CartContext from "../../store/CartContext";
 
-
 const Header = (props) => {
   const [showInput, setShowInput] = useState(false);
   const searchHandler = () => {
@@ -17,14 +16,13 @@ const Header = (props) => {
     setShowInput(false);
   };
   const InstallButtonHandler = () => {
-    <Link to="/newPage" />
+    <Link to="/newPage" />;
   };
   // cartImage and counting the items
   const cartCtx = useContext(CartContext);
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
-  }, 0)
-console.log('hhdf',props.data)
+  }, 0);
   return (
     <React.Fragment>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,8 +49,6 @@ console.log('hhdf',props.data)
             </Link>
           </div>
 
-          {/* <div className="vector"><Account/></div> */}
-          {/* cart image and counter */}
           <div className="vector1" onClick={props.onCartIconClick}>
             <div className="cart">
               <img src={cartImage} alt="can't load" />
@@ -62,7 +58,10 @@ console.log('hhdf',props.data)
           {/* user profile section*/}
           <div className="vector">
             <div className="userProfile">
-             <Link to="/authentication"> <img src={profileImage} alt="can't load" /></Link>
+              <Link to="/authentication">
+                {" "}
+                <img src={profileImage} alt="can't load" />
+              </Link>
             </div>
           </div>
 
@@ -98,7 +97,6 @@ console.log('hhdf',props.data)
           </div>
         </div>
       </nav>
-      {/* <div className="displayCard">{props.data.map(MapCard)}</div> */}
     </React.Fragment>
   );
 };
