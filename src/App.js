@@ -1,13 +1,20 @@
-import  React from 'react';
-import Header from './Component/Headers/Header';
+
+import React from "react";
+import { BrowserRouter, Switch } from "react-router-dom";
+import CartProvider from "./store/CartProvider";
+import Routes from './Routes/index';
 
 const App = () => {
-  return  (
-    <React.Fragment>
-    <Header/>
-    </React.Fragment>
-  )
+  return (
+    <CartProvider>
+      <BrowserRouter>
+        <Switch>
+          <Routes />  
+        </Switch>
+      </BrowserRouter>
+    </CartProvider>
+  );
+};
 
-}
 
 export default App;
