@@ -1,4 +1,4 @@
-# Prooffly Front End
+# Shopping_app Front End
 
 ## Installation
 
@@ -6,10 +6,9 @@
 
 ``` bash
 # clone the repo
-$ git clone  https://gitlab.com/tasinreza/prooffly-frontend.git
-
+$ git clone  https://github.com/akshata-systango/shopping_app
 # go into app's directory
-$ cd prooffly_frontend
+$ cd shopping_app
 
 # install app's dependencies
 $ npm install
@@ -26,15 +25,15 @@ $ npm install
 $ npm start
 ```
 
-Navigate to [http://localhost:3000](http://localhost:8000). The app will automatically reload if you change any of the source files.
+Navigate to [http://localhost:3000](http://localhost:3000). The app will automatically reload if you change any of the source files.
 
 ### Build
 
-Run `publish` to build the project. The build artifacts will be stored in the `build/` directory.
+Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
 
 ```bash
 # build for production with minification
-$ npm run publish
+$ npm run build
 ```
 
 ## What's included
@@ -45,23 +44,31 @@ Within the download you'll find the following directories and files, logically g
 prooffly_frontend
 ├── public/                 # static files
 │   |── index.html          # html template
-|   |__ prooffly_v2.7       # stable core prooffly version wise template
+|   |__ manifest.json      # this is a menifest.json file
 │
 ├── assets/                 # assets
-|    |__ imgs               # app images
+|    |__ images               # app images
 |
 ├── scss/                   # app scss/css source
 |
 ├── src/                    # project root
-|   |-- action/             # folder for handling module action   
-|   ├── containers/         # views source 
-|   |     |__ App/         
-|   |         |__ index.js  # app routes
+|   |
 |   |
 │   ├── components/         # views source
-|   |-- reducers/           # folder for handle dispatch payload
-│   ├── index.js
-│   └── store.js            # template state example 
+|   |-- CartCheckout        # folder for customer/order detail form
+|   |-- Headers             # folder for handling the header
+|   |-- Product             # folder for handling products 
+|   |-- UI                  # folder for providing UI modals
+|   |
+|   ├── Routes              # app routes
+|   |
+|   ├── shared              # shared component of app
+|   |
+|   ├── store               # folder for handling the context
+|   |
+|   ├── utils               # folder providing the halper function and constant array   
+│   ├── index.js            # Entry point of app
+│   └── App.js              # template  
 │
 ├── utils/                  # helper functions
 │
