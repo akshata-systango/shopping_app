@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./style/Header.css";
+import pt from 'prop-types';
 import systangoLogo from "../../assets/images/Rectangle.svg";
 import { Link } from "react-router-dom";
 import searchImage from "../../assets/images/Vector2.svg";
@@ -25,7 +26,7 @@ const Header = (props) => {
   }, 0);
   return (
     <React.Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    
         <div>
           <img src={systangoLogo} alt="can't load" className="sysImage" />
           <div className="shop">
@@ -59,7 +60,6 @@ const Header = (props) => {
           <div className="vector">
             <div className="userProfile">
               <Link to="/authentication">
-                {" "}
                 <img src={profileImage} alt="can't load" />
               </Link>
             </div>
@@ -96,9 +96,12 @@ const Header = (props) => {
             </button>
           </div>
         </div>
-      </nav>
     </React.Fragment>
   );
 };
+
+Header.propTypes = {
+  onCartIconClick : pt.bool.isRequired
+}
 
 export default Header;

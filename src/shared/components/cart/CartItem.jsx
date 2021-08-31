@@ -1,4 +1,5 @@
 import "./style/cart.css";
+import pt from 'prop-types';
 
 const CartItems = (props) => {
   const price = `$${props.price.toFixed(2)}`;
@@ -20,5 +21,15 @@ const CartItems = (props) => {
     </li>
   );
 };
+
+CartItems.propTypes = {
+  price : pt.number.isRequired,
+  detail : pt.string.isRequired,
+  brand : pt.string.isRequired,
+  size : pt.string.isRequired,
+  amount : pt.number.isRequired,
+  onRemove : pt.func.isRequired,
+  onAdd : pt.func.isRequired
+}
 
 export default CartItems;

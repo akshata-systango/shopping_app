@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import pt from 'prop-types';
 import './style/Modal.css';
 
 const Backdrop = (props) => {
@@ -26,4 +27,8 @@ const Modal = (props) => {
     </Fragment>
 }
 
+Modal.propTypes = {
+    onClose : pt.bool.isRequired,
+    children :pt.element.isRequired
+}
 export default Modal;

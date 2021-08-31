@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import './style/product.css';
 import Input from '../UI/Input';
+import pt from 'prop-types';
 
 
 const AddProductQuantity = (props) => {
@@ -46,5 +47,10 @@ const AddProductQuantity = (props) => {
     </form>
   );
 };
+
+AddProductQuantity.propTypes = {
+  onAddToCart : pt.func.isRequired,
+  id : pt.number.isRequired
+}
 
 export default AddProductQuantity;

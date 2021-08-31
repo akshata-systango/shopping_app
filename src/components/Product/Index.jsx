@@ -45,7 +45,7 @@ const Products = () => {
   ];
   const [menudata, setMenuData] = useState(product);
   const [mapCard, setMapCard] = useState(true)
-  const [buttons, setButton] = useState(Buttoncategories);
+  const buttons = Buttoncategories;
   const [sortingOrder, setSortingOrder] = useState("Ascending");
 
   const filter = (category) => {
@@ -87,8 +87,7 @@ const Products = () => {
 
           <ul className="dd-menu">
             <li>
-              <div onClick={PriceHighToLowHandler}>High To Low</div>
-            </li>
+              <div onClick={PriceHighToLowHandler}>High To Low</div></li>
 
             <li>
               <div onClick={PriceLowToHighHandler}>Low To High</div>

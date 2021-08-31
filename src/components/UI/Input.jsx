@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/Modal.css';
+import pt from 'prop-types';
 const Input = React.forwardRef((props, ref) => {
     return (
       <div className="input">
@@ -8,5 +9,10 @@ const Input = React.forwardRef((props, ref) => {
       </div>
     );
   });
+
+Input.propTypes = {
+label : pt.element.isRequired,
+input : pt.element.isRequired
+}
   
   export default Input;

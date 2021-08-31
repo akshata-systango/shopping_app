@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
-
 import classes from './style/checkoutForm.module.css';
+import pt from 'prop-types';
 
 const isEmpty = (value) => value.trim() === '';
 const isSixChars = (value) => value.trim().length === 6;
@@ -103,4 +103,8 @@ const Checkout = (props) => {
   );
 };
 
+Checkout.propTypes ={
+  onConfirm : pt.func.isRequired,
+  onCancel : pt.bool.isRequired
+}
 export default Checkout;

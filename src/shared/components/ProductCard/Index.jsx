@@ -6,13 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import ProductSize from "../../../utils/Constant";
 import Input from "../button/Input";
+import pt from "prop-types";
 
 const Card = (props) => {
   const cartCtx = useContext(CartContext);
   const [showButton, setShowButton] = useState(false);
   const [showSize, setShowSize] = useState(false);
-  const [size,setSize] = useState(38)
-  
+  const [size, setSize] = useState(38);
+
   toast.configure();
   const onToggleHandler = () => {
     setShowSize(true);
@@ -23,8 +24,7 @@ const Card = (props) => {
 
   const showAddToCartButton = (event) => {
     setShowButton(true);
-    setSize(event.target.value)
-   
+    setSize(event.target.value);
   };
 
   const addToCartHandler = (amount) => {
@@ -36,13 +36,13 @@ const Card = (props) => {
     cartCtx.addItem({
       id: props.id,
       brand: props.brand,
-      size:size,
+      size: size,
       amount: amount,
       detail: props.detail,
       category: props.category,
       price: props.price,
     });
-    console.log('size:- ',size)
+    console.log("size:- ", size);
   };
 
   return (
@@ -103,30 +103,6 @@ const Card = (props) => {
                       onClick={showAddToCartButton}
                       className="size"
                     />
-                    {/* <input
-                      type="button"
-                      value="39"
-                      onClick={showAddToCartButton}
-                      className="size"
-                    />
-                    <input
-                      type="button"
-                      value="40"
-                      onClick={showAddToCartButton}
-                      className="size"
-                    />
-                    <input
-                      type="button"
-                      value="42"
-                      onClick={showAddToCartButton}
-                      className="size"
-                    />
-                    <input
-                      type="button"
-                      value="44"
-                      onClick={showAddToCartButton}
-                      className="size"
-                    /> */}
                   </div>
                 </div>
               )}
@@ -138,5 +114,13 @@ const Card = (props) => {
     </React.Fragment>
   );
 };
-
+Card.propTypes = {
+  id: pt.string.isRequired,
+  brand: pt.string.isRequired,
+  size: pt.number.isRequired,
+  amount: pt.number.isRequired,
+  detail: pt.string.isRequired,
+  category: pt.string.isRequired,
+  price: pt.number.isRequired,
+};
 export default Card;

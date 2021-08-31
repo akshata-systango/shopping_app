@@ -4,6 +4,7 @@ import "./style/cart.css";
 import CartItems from "./CartItem";
 import CartContext from "../../../store/CartContext";
 import CheckOutDetailForm from "../../../components/CartCheckout";
+import pt from 'prop-types';
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -20,16 +21,9 @@ const Cart = (props) => {
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
   };
-
+ 
   const OrderButtonHandler = () => {
-    setOrderPlaced(true);
-    var x = document.getElementById("cartItem");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  };
+    setOrderPlaced(true);}
 
   const SubmitOrderHandler = async (userData) => {
     setOrderSubmitted(true);
@@ -50,6 +44,7 @@ const Cart = (props) => {
 
   const cartItem = (
     <ul className="cart-items" id="cartItem">
+    
       {cartCtx.items.map((item) => (
         <CartItems
           key={item.id}
@@ -64,6 +59,7 @@ const Cart = (props) => {
           onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
+      
     </ul>
   );
 
@@ -119,4 +115,8 @@ const Cart = (props) => {
     </Modal>
   );
 };
+
+Cart.propTypes = {
+onClose : pt.bool.isRequired, 
+}
 export default Cart;
