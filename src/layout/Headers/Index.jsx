@@ -29,24 +29,24 @@ const Header = (props) => {
     
         <div>
           <img src={systangoLogo} alt="can't load" className="sysImage" />
-          <div className="shop">
+          <div >
             <Link to="/shop">
-              <span>Shop</span>
+              <span className="shop">Shop</span>
             </Link>
           </div>
-          <div className="aboutUs">
+          <div >
             <Link to="/about">
-              <span>About us </span>
+              <span className="aboutUs">About us </span>
             </Link>
           </div>
-          <div className="contactUs">
+          <div >
             <Link to="/contact">
-              <span>Contact Us</span>
+              <span className="contactUs">Contact Us</span>
             </Link>
           </div>
-          <div className="ourStore">
+          <div >
             <Link to="/store">
-              <span> Our Store </span>
+              <span className="ourStore"> Our Store </span>
             </Link>
           </div>
 

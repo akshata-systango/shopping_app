@@ -65,6 +65,7 @@ font-style: normal;
 font-weight: normal;
 font-size: 0.8rem;
 line-height: 16px;
+text-decoration: none;
 text-transform: capitalize;
 
 color:black;
@@ -245,9 +246,11 @@ color: #FFFFFF;
 @media screen and (max-width : 1000px){
   .shop{
     left:320px;
+    color: black;
   }
   .aboutUs{
     left:380px;
+    color: black;
   }
   .contactUs{
     left: 520px;
