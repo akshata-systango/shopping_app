@@ -152,13 +152,14 @@ span{
   display: flex;
 }
 .close{
-  width: 150px;
+  width: 108px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
   text-transform: capitalize;
+  margin-right: 50px;
 }
 
 /* cart item counter */
@@ -181,7 +182,7 @@ span{
   width: 1440px;
   height: 53px;
   left: 0px;
-  top: 70px;
+  top: 75px;
   display: flex;
   
   background: linear-gradient(90.06deg, #181716 0%, #ED4E08 99.97%);
@@ -284,4 +285,11 @@ color: #FFFFFF;
 }
 .para{
   font-weight: bolder;
+}
+.searching{
+  display: flex;
+  margin-right: 20px;
+}
+.searchbtn{
+  height: 25px;
 }
