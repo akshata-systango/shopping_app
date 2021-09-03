@@ -6,6 +6,7 @@ import CartContext from "../../../store/CartContext";
 import CheckOutDetailForm from "../../../components/CartCheckout";
 import pt from 'prop-types';
 
+
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -23,7 +24,14 @@ const Cart = (props) => {
   };
  
   const OrderButtonHandler = () => {
-    setOrderPlaced(true);}
+    setOrderPlaced(true);
+    const hide = document.getElementById('cartItem')
+    if (hide.style.display === "none") {
+      hide.style.display = "block";
+    } else {
+      hide.style.display = "none";
+    }
+  }
 
   const SubmitOrderHandler = async (userData) => {
     setOrderSubmitted(true);
@@ -68,9 +76,12 @@ const Cart = (props) => {
       <button className="button--alt" onClick={props.onClose}>
         Close
       </button>
+    
       {hasItems && (
         <button className="button" onClick={OrderButtonHandler}>
-          Place Order
+         
+         Place Order
+         
         </button>
       )}
     </div>
@@ -78,21 +89,26 @@ const Cart = (props) => {
 
   const cartModal = (
     <React.Fragment>
-      {cartItem}
+      <div id="cartItem">
+      {cartItem} 
+      </div>
 
       <div className="total">
         <div className="final">
           <span className="amount">Amount</span>
           <span className="price">{totalAmount}</span>
         </div>
+       
         {orderPlaced && (
           <CheckOutDetailForm
             onConfirm={SubmitOrderHandler}
             onCancel={props.onClose}
           />
         )}
+       
         {!orderPlaced && hideButtons}
       </div>
+     
     </React.Fragment>
   );
   const submittingModelData = <p>Sending the data</p>;

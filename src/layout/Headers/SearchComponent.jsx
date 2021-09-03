@@ -1,57 +1,36 @@
-import React,{useState, useEffect} from 'react';
-import Search from './Search';
+import React, { useState } from "react";
 
-const SearchComponent = () => {
-    const [searchQuery, setSearchQuery] = useState("")
-    const [filteredData, setFilteredData] = useState("")
-    const [product, setProduct] = useState([]);
+const SearchComponent =  ({product}) => {
+  const [filterData, setFilterData] = useState([])
+  console.log(
+    "test",
+    product?.map((item) => item)
+  );
+  const handleFilter = (event) => {
+    const searchBrand = event.target.value;
+    const newFilter = product?.filter(item => {return item.detail.toLowerCase().includes(searchBrand.toLowerCase())})
+    setFilterData(newFilter ?? [])
 
-    useEffect(() => {
-      const fetchProducts = async () => {
-        const response = await fetch(
-          "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
-        );
-        const responseData = await response.json();
-        const fetchProducts = [];
-  
-        Object.values(responseData).map((item) => {
-          return fetchProducts.push({
-            id: item,
-            imgsrc: item.imgsrc,
-            brand: item.brand,
-            category: item.category,
-            detail: item.detail,
-            price: item.price,
-          });
-        });
-  
-        setProduct(fetchProducts);
-      };
-      fetchProducts();
-    }, []);
 
-    const diaplayData = product.map((data) => {
-    return (<li>{data.detail}</li>)
-})
+  }
+  return (
+    <div className="searching">
+      <button type="submit" className="searchbtn">
+        Search
+      </button>
+      <input
+        type="search"
+        name="search"
+        className="close"
+        placeholder="Search..."
+        onChange={handleFilter}
+      />
 
-const handleSearch = (newSearch) => {
-    setSearchQuery(newSearch)
-    product.map((data) => {
-        if(data.include(searchQuery)){
-            setFilteredData(data)
-        }
-    })
-
-}
-    return (
-        <div>
-            <Search handleSearch={handleSearch}/>
-            <h1>searched for</h1>
-            <p>{filteredData}</p>
-            <ul>{diaplayData}</ul>
-            
-        </div>
-    );
+      {filterData.map((item) => (
+        <li key={item.id}>{item.brand}</li>
+      ))}
+    </div>
+  );
 };
 
 export default SearchComponent;

@@ -7,7 +7,8 @@ import searchImage from "../../assets/images/Vector2.svg";
 import cartImage from "../../assets/images/Vector1.svg";
 import profileImage from "../../assets/images/Vector.svg";
 import CartContext from "../../store/CartContext";
-import Search from "./Search";
+
+import SearchComponent from "./SearchComponent";
 
 const Header = (props) => {
   const [showInput, setShowInput] = useState(false);
@@ -68,7 +69,7 @@ const Header = (props) => {
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
               <div className="searchInput">
-               <Search/>
+               <SearchComponent/>
               </div>
             )}
           </div>

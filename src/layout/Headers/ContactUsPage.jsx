@@ -38,7 +38,7 @@ const ContactUsPage = () => {
       <div className="contactForm">
         <form id="form">
           <InputGroup className="mb-3">
-            <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
+            <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
             <FormControl
               placeholder="Username"
               aria-label="Username"

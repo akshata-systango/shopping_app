@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import "./style/userAuthForm.css";
-
-
+import { Button, InputGroup, FormControl } from "react-bootstrap";
 
 const UserAuthentication = () => {
   const emailInputRef = useRef();
@@ -72,44 +71,48 @@ const UserAuthentication = () => {
 
         <form onSubmit={submitHandler}>
           <div className="grey-text">
-            <div>
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                ref={emailInputRef}
 
-              />
-            </div>
+            <InputGroup className="mb-3">
+            <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
+            <FormControl
+              placeholder="enter email"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              ref={emailInputRef}
+            />
+            </InputGroup>
+            
             <div>
-            <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                ref={passwordInputRef}
-              
-              />
+            <InputGroup className="mb-3">
+            <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
+            <FormControl
+              placeholder="enter password"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              ref={passwordInputRef}
+            />
+            </InputGroup>
             </div>
           </div>
           <div className="text-center">
             {!isLoading && (
-              <button variant="outline-danger" className="buttonss">
+              <Button variant="outline-danger" className="buttonss">
                 {isLogin ? "Login" : "Create Account"}
-              </button>
+              </Button>
             )}
             {isLoading && <p>Sending request...</p>}
-            <button
+            <Button
               variant="outline-danger"
               className="buttonss"
               onClick={switchAuthModeHandler}
             >
               {isLogin ? "Create new account" : "Login with existing account"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>
     </>
   );
 };
-
-
 
 export default UserAuthentication;

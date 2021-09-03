@@ -3,6 +3,7 @@ import "./style/product.css";
 import Button from "../../shared/components/button/button";
 import Helper from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
+import SearchComponent from "../../layout/Headers/SearchComponent";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -128,6 +129,8 @@ const Products = () => {
         </div>
       </div>
       <p className="gap"></p>
+
+      {product && <SearchComponent product={product}/>}
     </div>
   );
 };

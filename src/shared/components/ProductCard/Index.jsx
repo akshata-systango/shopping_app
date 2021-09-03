@@ -115,10 +115,10 @@ const Card = (props) => {
   );
 };
 Card.propTypes = {
-  id: pt.string.isRequired,
+  id: pt.string,
   brand: pt.string.isRequired,
-  size: pt.number.isRequired,
-  amount: pt.number.isRequired,
+  size: pt.number,
+  amount: pt.number,
   detail: pt.string.isRequired,
   category: pt.string.isRequired,
   price: pt.number.isRequired,
