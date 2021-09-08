@@ -69,7 +69,7 @@ const Header = (props) => {
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
               <div className="searchInput">
-               <SearchComponent/>
+               <SearchComponent />
               </div>
             )}
           </div>

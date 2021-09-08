@@ -15,6 +15,7 @@ const Cart = (props) => {
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
+  // console.log("items check", cartCtx.items)
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem(item);

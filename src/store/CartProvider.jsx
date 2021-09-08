@@ -1,8 +1,7 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 import CartContext from "./CartContext";
 import pt from 'prop-types';
 
-// redux store
 const defaultCartState = {
   items: [],
   totalAmount: 0,
@@ -64,6 +63,7 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+  
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     defaultCartState
@@ -81,8 +81,35 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "CLEAR" });
   };
 
+
+  // const [product, setProduct] = useState([]);
+  const products = [];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(
+        "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
+      );
+      const responseData = await response.json();
+      
+
+      Object.values(responseData).map((item) => {
+        return products.push({
+          id: item,
+          imgsrc: item.imgsrc,
+          brand: item.brand,
+          category: item.category,
+          detail: item.detail,
+          price: item.price,
+        });
+      });
+    };
+    fetchProducts();
+  }, []);
+console.log("checking", products)
+
   const cartContext = {
     items: cartState.items,
+    products:products,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,

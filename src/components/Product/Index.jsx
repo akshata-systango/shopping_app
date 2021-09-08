@@ -3,7 +3,6 @@ import "./style/product.css";
 import Button from "../../shared/components/button/button";
 import Helper from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
-import SearchComponent from "../../layout/Headers/SearchComponent";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -45,7 +44,7 @@ const Products = () => {
     "tees",
   ];
   const [menudata, setMenuData] = useState(product);
-  const [mapCard, setMapCard] = useState(true)
+  const [mapCard, setMapCard] = useState(true);
   const buttons = Buttoncategories;
   const [sortingOrder, setSortingOrder] = useState("Ascending");
 
@@ -55,7 +54,7 @@ const Products = () => {
       setMenuData(product);
       prodCount = product.length;
       setCount(prodCount);
-      setMapCard(false)
+      setMapCard(false);
       return;
     }
     const filterData = product.filter((item) => {
@@ -64,7 +63,7 @@ const Products = () => {
     setMenuData(filterData);
     prodCount = filterData.length;
     setCount(prodCount);
-    setMapCard(false)
+    setMapCard(false);
   };
   const PriceHighToLowHandler = () => {
     setSortingOrder("Descending");
@@ -88,7 +87,8 @@ const Products = () => {
 
           <ul className="dd-menu">
             <li>
-              <div onClick={PriceHighToLowHandler}>High To Low</div></li>
+              <div onClick={PriceHighToLowHandler}>High To Low</div>
+            </li>
 
             <li>
               <div onClick={PriceLowToHighHandler}>Low To High</div>
@@ -109,19 +109,20 @@ const Products = () => {
               />
             );
           })}
-          {mapCard && product.map((value) => {
-            return (
-              <Card
-                imgsrc={value.imgsrc}
-                key={value.id}
-                id={value.id}
-                brand={value.brand}
-                category={value.category}
-                detail={value.detail}
-                price={value.price}
-              />
-            );
-          })}
+          {mapCard &&
+            product.map((value) => {
+              return (
+                <Card
+                  imgsrc={value.imgsrc}
+                  key={value.id}
+                  id={value.id}
+                  brand={value.brand}
+                  category={value.category}
+                  detail={value.detail}
+                  price={value.price}
+                />
+              );
+            })}
           <div className="productCount">
             <p className="productStyling">All Products</p>
             {count && <h6 className="pCount">({count} Product)</h6>}
@@ -130,7 +131,7 @@ const Products = () => {
       </div>
       <p className="gap"></p>
 
-      {product && <SearchComponent product={product}/>}
+      {/* {product && <SearchComponent product={product}/>} */}
     </div>
   );
 };

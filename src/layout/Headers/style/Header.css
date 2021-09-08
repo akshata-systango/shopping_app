@@ -147,10 +147,6 @@ text-decoration: none;
 span{
   color: #000;
 }
-
-.searchInput{
-  display: flex;
-}
 .close{
   width: 108px;
   font-family: Roboto;
@@ -292,4 +288,8 @@ color: #FFFFFF;
 }
 .searchbtn{
   height: 25px;
+}
+.listing{
+  border: 2px solid brown;
+  width: 150px;
 }

@@ -1,35 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import CartContext from "../../store/CartContext";
+const SearchComponent = () => {
+  const cartCtx = useContext(CartContext);
 
-const SearchComponent =  ({product}) => {
-  const [filterData, setFilterData] = useState([])
-  console.log(
-    "test",
-    product?.map((item) => item)
-  );
+  console.log("items==", cartCtx.products);
+
+  const [filterData, setFilterData] = useState([]);
   const handleFilter = (event) => {
     const searchBrand = event.target.value;
-    const newFilter = product?.filter(item => {return item.detail.toLowerCase().includes(searchBrand.toLowerCase())})
-    setFilterData(newFilter ?? [])
-
-
-  }
+    const newFilter = cartCtx.products.filter((item) => {
+      return item.brand.toLowerCase().includes(searchBrand.toLowerCase());
+    });
+    console.log("lets see", newFilter);
+    setFilterData(newFilter);
+  };
   return (
-    <div className="searching">
-      <button type="submit" className="searchbtn">
-        Search
-      </button>
-      <input
-        type="search"
-        name="search"
-        className="close"
-        placeholder="Search..."
-        onChange={handleFilter}
-      />
-
-      {filterData.map((item) => (
-        <li key={item.id}>{item.brand}</li>
-      ))}
-    </div>
+    <>
+      <div className="searching">
+        <input
+          className="close"
+          onChange={handleFilter}
+          placeholder="search..."
+        />
+      </div>
+      <div className="listing">
+        {filterData.map((item) => (
+          <li>
+            {item.detail}
+          </li>
+        ))}
+      </div>
+    </>
   );
 };
 
