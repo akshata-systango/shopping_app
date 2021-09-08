@@ -1,0 +1,14 @@
+.btns{
+    margin-left: 3px;
+    border-radius: 18px;
+    width: 120px;
+    font-size: 12px;
+    height: 28px;
+    border: 2px solid brown;
+   align-items: center;
+   text-transform: uppercase;
+}
+.btns:hover{
+    color: white;
+    background-color: brown;
+}

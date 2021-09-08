@@ -1,0 +1,295 @@
+
+.sysImage{
+position: absolute;
+width: 200px;
+height: 50px;
+left: 18px;
+top: 10px;
+
+/* background: url(image.png); */
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.03));
+}
+
+.ractangle1{
+  position: absolute;
+width: 1440px;
+height: 70px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
+}
+.productCount{
+    margin-top: 20px;
+}
+.displayCard{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+}
+.installButton{
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 30px;
+    width:100px;
+}
+.shop{
+    position: absolute;
+    width: 55px;
+    height: 19px;
+    left: 480px;
+    top: 27px;
+    background-color: white;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.8rem;
+    line-height: 16px;
+    text-transform: capitalize;
+    
+    color: black;
+    
+}
+.aboutUs{
+  position: absolute;
+width: 58px;
+height: 16px;
+left: 540px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 0.8rem;
+line-height: 16px;
+text-decoration: none;
+text-transform: capitalize;
+
+color:black;
+
+}
+.ourStore{
+  position: absolute;
+width: 66px;
+height: 16px;
+left: 620px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 0.8rem;
+line-height: 16px;
+text-transform: capitalize;
+
+color: black;
+}
+.contactUs{
+  position: absolute;
+width: 69px;
+height: 16px;
+left: 690px;
+top: 27px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 0.8rem;
+line-height: 16px;
+text-transform: capitalize;
+text-decoration: none;
+
+}
+.vector{
+  position: absolute;
+  /* left: 88.67%; */
+  right: 15.68%;
+  top: 4%;
+  bottom: 15.67%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+.vector1{
+  position: absolute;
+  left: 90%;
+  right: 24%;
+  top: 4%;
+  bottom: 16.33%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+.vector2{
+
+  position: absolute;
+  left: 86.5%;
+  right: 10.07%;
+  top: 4%;
+  bottom: 35.27%;
+  border: none;
+  height: 40px;
+  background-color: white;
+  
+  /* background: #010202; */
+}
+
+.cartBtn{
+  display: flex;
+}
+span{
+  color: #000;
+}
+.close{
+  width: 108px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  margin-right: 50px;
+}
+
+/* cart item counter */
+.cart{
+  display: flex;
+}
+.itemCount{
+ 
+      background-color: #b94517;
+      padding: 0.1rem 0.3rem;
+      border-radius: 25px;
+      margin-left: 0.1rem;
+      font-weight: bold;
+      color: white;
+   
+}
+.ractangle{
+
+  position: absolute;
+  width: 1440px;
+  height: 53px;
+  left: 0px;
+  top: 75px;
+  display: flex;
+  
+  background: linear-gradient(90.06deg, #181716 0%, #ED4E08 99.97%);
+}
+.inviteLine{
+position: absolute;
+/* width: 545px; */
+height: 19px;
+left: 390px;
+top: 20px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+/* identical to box height */
+
+text-transform: capitalize;
+
+color: #FFFFFF;
+}
+.inviteNow{
+  position: absolute;
+  width: 90px;
+  height: 20px;
+  left: 1030px;
+  top: 16px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+  
+  color: #000000;
+}
+
+.inviteNow{
+  position: absolute;
+  width: 94px;
+  height: 29px;
+  left: 1021px;
+  /* top: 82px; */
+  
+  background: #FFFFFF;
+  border-radius: 20px;
+} 
+.contact-form{
+  margin-top: 200px;
+  text-align: center;
+  font-family: monospace;
+  font: icon;
+  border: 2px solid brown;
+  margin: 10rem;
+}
+.form-group{
+  display: flex;
+  justify-content: space-around;
+  
+}
+@media screen and (max-width : 1000px){
+  .shop{
+    left:320px;
+    color: black;
+  }
+  .aboutUs{
+    left:380px;
+    color: black;
+  }
+  .contactUs{
+    left: 520px;
+  }
+  .ourStore{
+    left: 440px;
+  }
+  .ractangle{
+    width: 750px;
+  }
+}
+.contactForm{
+ align-items: center;
+ align-content: center;
+ border: 2px solid brown;
+  padding: 2rem;
+  margin: 15rem;
+}
+.btnsubmit{
+  align-content: center;
+  margin: 2rem;
+  margin-left: 20rem;
+}
+.aboutpage{
+  margin: 13rem;
+  padding: 2rem;
+  border: 2px solid brown;
+}
+.aboutheading{
+  color: brown;
+}
+.para{
+  font-weight: bolder;
+}
+.searching{
+  display: flex;
+  margin-right: 20px;
+}
+.searchbtn{
+  height: 25px;
+}
+.listing{
+  border: 2px solid brown;
+  width: 150px;
+}
