@@ -40,11 +40,7 @@ const ContactUsPage = () => {
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
             <FormControl
-<<<<<<< HEAD
               placeholder="Username"
-=======
-              
->>>>>>> initial search option
               aria-label="Username"
               aria-describedby="basic-addon1"
               ref={enterUsernameRef}

@@ -115,11 +115,7 @@ const Card = (props) => {
   );
 };
 Card.propTypes = {
-<<<<<<< HEAD
   id: pt.string,
-=======
-  id: pt.object.isRequired,
->>>>>>> initial search option
   brand: pt.string.isRequired,
   size: pt.number,
   amount: pt.number,
