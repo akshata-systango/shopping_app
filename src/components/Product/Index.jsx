@@ -3,6 +3,10 @@ import "./style/product.css";
 import Button from "../../shared/components/button/button";
 import Helper from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
+<<<<<<< HEAD
+=======
+import Header from "../../layout/Headers/Index";
+>>>>>>> initial search option
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -44,7 +48,11 @@ const Products = () => {
     "tees",
   ];
   const [menudata, setMenuData] = useState(product);
+<<<<<<< HEAD
   const [mapCard, setMapCard] = useState(true);
+=======
+  const [mapCard, setMapCard] = useState(true)
+>>>>>>> initial search option
   const buttons = Buttoncategories;
   const [sortingOrder, setSortingOrder] = useState("Ascending");
 
@@ -54,7 +62,11 @@ const Products = () => {
       setMenuData(product);
       prodCount = product.length;
       setCount(prodCount);
+<<<<<<< HEAD
       setMapCard(false);
+=======
+      setMapCard(false)
+>>>>>>> initial search option
       return;
     }
     const filterData = product.filter((item) => {
@@ -63,7 +75,11 @@ const Products = () => {
     setMenuData(filterData);
     prodCount = filterData.length;
     setCount(prodCount);
+<<<<<<< HEAD
     setMapCard(false);
+=======
+    setMapCard(false)
+>>>>>>> initial search option
   };
   const PriceHighToLowHandler = () => {
     setSortingOrder("Descending");
@@ -87,8 +103,12 @@ const Products = () => {
 
           <ul className="dd-menu">
             <li>
+<<<<<<< HEAD
               <div onClick={PriceHighToLowHandler}>High To Low</div>
             </li>
+=======
+              <div onClick={PriceHighToLowHandler}>High To Low</div></li>
+>>>>>>> initial search option
 
             <li>
               <div onClick={PriceLowToHighHandler}>Low To High</div>
@@ -109,6 +129,7 @@ const Products = () => {
               />
             );
           })}
+<<<<<<< HEAD
           {mapCard &&
             product.map((value) => {
               return (
@@ -123,6 +144,21 @@ const Products = () => {
                 />
               );
             })}
+=======
+          {mapCard && product.map((value) => {
+            return (
+              <Card
+                imgsrc={value.imgsrc}
+                key={value.id}
+                id={value.id}
+                brand={value.brand}
+                category={value.category}
+                detail={value.detail}
+                price={value.price}
+              />
+            );
+          })}
+>>>>>>> initial search option
           <div className="productCount">
             <p className="productStyling">All Products</p>
             {count && <h6 className="pCount">({count} Product)</h6>}
@@ -130,10 +166,16 @@ const Products = () => {
         </div>
       </div>
       <p className="gap"></p>
+<<<<<<< HEAD
 
       {/* {product && <SearchComponent product={product}/>} */}
     </div>
   );
+=======
+    </div>
+  );
+  Header(product)
+>>>>>>> initial search option
 };
 
 export default Products;

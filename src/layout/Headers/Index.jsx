@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
+=======
+import React, { useState, useContext, useRef } from "react";
+>>>>>>> initial search option
 import "./style/Header.css";
 import pt from 'prop-types';
 import systangoLogo from "../../assets/images/Rectangle.svg";
@@ -8,6 +12,7 @@ import cartImage from "../../assets/images/Vector1.svg";
 import profileImage from "../../assets/images/Vector.svg";
 import CartContext from "../../store/CartContext";
 
+<<<<<<< HEAD
 import SearchComponent from "./SearchComponent";
 
 const Header = (props) => {
@@ -15,6 +20,31 @@ const Header = (props) => {
   const searchHandler = () => {
     setShowInput(true);
   };
+=======
+const Header = (props) => {
+  const [showInput, setShowInput] = useState(false);
+  const SearchInputRef = useRef()
+  const searchHandler = () => {
+    setShowInput(true);
+  };
+  const Searching = (event) => {
+    event.preventDefault();
+    const enteredSearch = SearchInputRef.current.value;
+    console.log('entered search is:-',enteredSearch)
+    // if(product.brand === enteredSearch){
+    //   product.map(item => {<Card 
+    //     imgsrc={item.imgsrc}
+    //     key={item.id}
+    //     id={item.id}
+    //     brand={item.brand}
+    //     category={item.category}
+    //     detail={item.detail}
+    //     price={item.price}/>})
+    // }
+
+  }
+   
+>>>>>>> initial search option
   const InstallButtonHandler = () => {
     <Link to="/newPage" />;
   };
@@ -69,7 +99,18 @@ const Header = (props) => {
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
               <div className="searchInput">
+<<<<<<< HEAD
                <SearchComponent />
+=======
+                <button
+                  type="button"
+                  className="btn-primary"
+                  onClick={Searching}
+                >
+                  Go
+                </button>
+                <input type="search" placeholder="search" className="close" ref={SearchInputRef}/>
+>>>>>>> initial search option
               </div>
             )}
           </div>
