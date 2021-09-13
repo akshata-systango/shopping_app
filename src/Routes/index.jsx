@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import Header from "../layout/Headers/Index";
 import Cart from "../shared/components/cart";
 
-
 const AboutUsPage = React.lazy(() => import("../layout/Headers/AboutUsPage"));
 
 const UserAuthentication = React.lazy(() =>
@@ -14,7 +13,9 @@ const Products = React.lazy(() => import("../components/Product/Index"));
 const ContactUsPage = React.lazy(() =>
   import("../layout/Headers/ContactUsPage")
 );
-
+const SearchComponent = React.lazy(() =>
+  import("../layout/Headers/SearchComponent")
+);
 const Routes = () => {
   const [showcartItem, setShowCartItem] = useState(false);
   const ShowCartDetails = () => {
@@ -23,6 +24,7 @@ const Routes = () => {
   const HideCartDetails = () => {
     setShowCartItem(false);
   };
+
   return (
     <>
       <Header onCartIconClick={ShowCartDetails} />
@@ -34,6 +36,7 @@ const Routes = () => {
           <Route path="/authentication" component={UserAuthentication} />
           <Route path="/contact" component={ContactUsPage} />
           <Route path="/about" component={AboutUsPage} />
+          <Route path="/search" component={SearchComponent} />
         </Suspense>
       </Switch>
     </>

@@ -8,8 +8,7 @@ import CartContext from "../../store/CartContext";
 const Products = () => {
   const cartCtx = useContext(CartContext);
   const Product = cartCtx.products;
-  // console.log("lets check",Product);
-  let [count, setCount] = useState(30);
+  // setTimeout( () => console.log("lets check",Product.length), 3000);
   const Buttoncategories = [
     "All",
     "tshirt",
@@ -19,17 +18,19 @@ const Products = () => {
     "tees",
   ];
   const [menudata, setMenuData] = useState(Product);
-  const [mapCard, setMapCard] = useState(true);
+  const [mapData, setMapData] = useState(true);
   const buttons = Buttoncategories;
   const [sortingOrder, setSortingOrder] = useState("Ascending");
+  let [count, setCount] = useState(30);
 
   const filter = (category) => {
     let prodCount;
     if (category === "All") {
       setMenuData(Product);
       prodCount = Product.length;
+      setMapData(false);
       setCount(prodCount);
-      setMapCard(false);
+
       return;
     }
     const filterData = Product.filter((item) => {
@@ -37,8 +38,8 @@ const Products = () => {
     });
     setMenuData(filterData);
     prodCount = filterData.length;
+    setMapData(false);
     setCount(prodCount);
-    setMapCard(false);
   };
   const PriceHighToLowHandler = () => {
     setSortingOrder("Descending");
@@ -71,31 +72,31 @@ const Products = () => {
         </label>
       </div>
       <div className="displayCard">
-        {Helper(menudata, sortingOrder).map((value) => {
-          return (
-            <Card
-              imgsrc={value.imgsrc}
-              key={value.id}
-              id={value.id}
-              brand={value.brand}
-              category={value.category}
-              detail={value.detail}
-              price={value.price}
-            />
-          );
-        })}
-        {mapCard &&
-          Product.map((item) => (
-            <Card
-              imgsrc={item.imgsrc}
-              key={item.id}
-              id={item.id}
-              brand={item.brand}
-              category={item.category}
-              detail={item.detail}
-              price={item.price}
-            />
-          ))}
+        {mapData
+          ? Product.map((item) => (
+              <Card
+                imgsrc={item.imgsrc}
+                key={item.id}
+                id={item.id}
+                brand={item.brand}
+                category={item.category}
+                detail={item.detail}
+                price={item.price}
+              />
+            ))
+          : Helper(menudata, sortingOrder).map((item) => {
+              return (
+                <Card
+                  imgsrc={item.imgsrc}
+                  key={item.id}
+                  id={item.id}
+                  brand={item.brand}
+                  category={item.category}
+                  detail={item.detail}
+                  price={item.price}
+                />
+              );
+            })}
       </div>
       <div className="productCount">
         <p className="productStyling">All Products</p>

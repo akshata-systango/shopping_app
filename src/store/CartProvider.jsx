@@ -104,7 +104,7 @@ const CartProvider = (props) => {
       });
     };
     fetchProducts();
-  }, [products]);
+  });
 console.log("checking", products)
 
   const cartContext = {

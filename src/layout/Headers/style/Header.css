@@ -240,7 +240,7 @@ color: #FFFFFF;
   justify-content: space-around;
   
 }
-@media screen and (max-width : 1000px){
+/* @media screen and (max-width : 1000px){
   .shop{
     left:320px;
     color: black;
@@ -258,7 +258,7 @@ color: #FFFFFF;
   .ractangle{
     width: 750px;
   }
-}
+} */
 .contactForm{
  align-items: center;
  align-content: center;
@@ -284,12 +284,21 @@ color: #FFFFFF;
 }
 .searching{
   display: flex;
-  margin-right: 20px;
+  margin-top: 200px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 .searchbtn{
   height: 25px;
 }
 .listing{
+  margin-left: 170px;
+}
+.listingProductsDetails:hover{
+  background-color:lightgray;
+  margin-right: 220px;
+  
+}
+.mb-3-s{
   border: 2px solid brown;
-  width: 150px;
 }

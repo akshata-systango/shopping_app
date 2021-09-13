@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
+import { FormControl, InputGroup } from "react-bootstrap";
 import CartContext from "../../store/CartContext";
+
 const SearchComponent = () => {
   const cartCtx = useContext(CartContext);
 
@@ -16,19 +18,22 @@ const SearchComponent = () => {
   };
   return (
     <>
-      <div className="searching">
-        <input
-          className="close"
-          onChange={handleFilter}
-          placeholder="search..."
-        />
-      </div>
-      <div className="listing">
-        {filterData.map((item) => (
-          <li>
-            {item.detail}
-          </li>
-        ))}
+      <div>
+        <div className="searching">
+          <InputGroup className="mb-3-s">
+            <FormControl
+              placeholder="search..."
+              onChange={handleFilter}
+              aria-describedby="basic-addon2"
+            />
+            <InputGroup.Text id="basic-addon2">search</InputGroup.Text>
+          </InputGroup>
+        </div>
+        <div className="listing">
+          {filterData.map((item) => (
+            <li className="listingProductsDetails">{item.detail}</li>
+          ))}
+        </div>
       </div>
     </>
   );
