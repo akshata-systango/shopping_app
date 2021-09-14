@@ -1,6 +1,6 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import CartContext from "./CartContext";
-import pt from 'prop-types';
+import pt from "prop-types";
 
 const defaultCartState = {
   items: [],
@@ -16,7 +16,7 @@ const cartReducer = (state, action) => {
       (item) => item.id === action.item.id
     );
     const existingCartItem = state.items[existingCartItemIndex];
-    
+
     let updatedItems;
 
     if (existingCartItem) {
@@ -26,8 +26,7 @@ const cartReducer = (state, action) => {
       };
       updatedItems = [...state.items];
       updatedItems[existingCartItemIndex] = updatedItem;
-    } 
-    else {
+    } else {
       updatedItems = state.items.concat(action.item);
     }
 
@@ -63,7 +62,7 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
-  
+  const [products, setProduct] = useState([]);
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     defaultCartState
@@ -81,19 +80,15 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "CLEAR" });
   };
 
-
-  // const [product, setProduct] = useState([]);
-  const products = [];
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
       );
       const responseData = await response.json();
-      
-
+      const fetchProducts = [];
       Object.values(responseData).map((item) => {
-        return products.push({
+        return fetchProducts.push({
           id: item,
           imgsrc: item.imgsrc,
           brand: item.brand,
@@ -102,14 +97,15 @@ const CartProvider = (props) => {
           price: item.price,
         });
       });
+      setProduct(fetchProducts)
     };
     fetchProducts();
-  });
-console.log("checking", products)
+  },[]);
+  console.log("checking", products);
 
   const cartContext = {
     items: cartState.items,
-    products:products,
+    products: products,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
@@ -123,6 +119,6 @@ console.log("checking", products)
   );
 };
 CartProvider.propTypes = {
-children : pt.element.isRequired
-}
+  children: pt.element.isRequired,
+};
 export default CartProvider;

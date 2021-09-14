@@ -11,7 +11,7 @@ const SearchComponent = () => {
   const handleFilter = (event) => {
     const searchBrand = event.target.value;
     const newFilter = cartCtx.products.filter((item) => {
-      return item.brand.toLowerCase().includes(searchBrand.toLowerCase());
+      return item.category.toLowerCase().includes(searchBrand.toLowerCase());
     });
     console.log("lets see", newFilter);
     setFilterData(newFilter);
@@ -26,7 +26,6 @@ const SearchComponent = () => {
               onChange={handleFilter}
               aria-describedby="basic-addon2"
             />
-            <InputGroup.Text id="basic-addon2">search</InputGroup.Text>
           </InputGroup>
         </div>
         <div className="listing">
