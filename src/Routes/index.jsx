@@ -13,9 +13,9 @@ const Products = React.lazy(() => import("../components/Product/Index"));
 const ContactUsPage = React.lazy(() =>
   import("../layout/Headers/ContactUsPage")
 );
-const SearchComponent = React.lazy(() =>
-  import("../layout/Headers/SearchComponent")
-);
+// const SearchComponent = React.lazy(() =>
+//   import("../layout/Headers/SearchComponent")
+// );
 const Routes = () => {
   const [showcartItem, setShowCartItem] = useState(false);
   const ShowCartDetails = () => {
@@ -36,7 +36,7 @@ const Routes = () => {
           <Route path="/authentication" component={UserAuthentication} />
           <Route path="/contact" component={ContactUsPage} />
           <Route path="/about" component={AboutUsPage} />
-          <Route path="/search" component={SearchComponent} />
+          {/* <Route path="/search" component={SearchComponent} /> */}
         </Suspense>
       </Switch>
     </>

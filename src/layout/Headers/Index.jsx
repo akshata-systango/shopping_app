@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./style/Header.css";
 import pt from "prop-types";
 import systangoLogo from "../../assets/images/Rectangle.svg";
@@ -7,8 +7,16 @@ import searchImage from "../../assets/images/Vector2.svg";
 import cartImage from "../../assets/images/Vector1.svg";
 import profileImage from "../../assets/images/Vector.svg";
 import CartContext from "../../store/CartContext";
+import Badge from "@material-ui/core/Badge";
+import IconButton from "@material-ui/core/IconButton";
+import SearchComponent from "./SearchComponent";
 
 const Header = (props) => {
+  const [showInput, setShowInput] = useState(false);
+  const searchHandler = () => {
+    setShowInput(true);
+  };
+
   const InstallButtonHandler = () => {
     <Link to="/newPage" />;
   };
@@ -17,6 +25,7 @@ const Header = (props) => {
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.amount;
   }, 0);
+
   return (
     <React.Fragment>
       <div className="w3-row">
@@ -48,8 +57,15 @@ const Header = (props) => {
         <div className="w3-third w3-container">
           <div className="vector1" onClick={props.onCartIconClick}>
             <div className="cart">
-              <img src={cartImage} alt="can't load" />
-              <span className="itemCount"> {numberOfCartItems}</span>
+              <IconButton
+                aria-label="show 11 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={numberOfCartItems} color="secondary">
+                  <img src={cartImage} alt="can't load" />
+                </Badge>
+              </IconButton>
+              {/* <span className="itemCount"> {numberOfCartItems}</span> */}
             </div>
           </div>
           {/* user profile section*/}
@@ -63,13 +79,12 @@ const Header = (props) => {
 
           {/* searching item */}
           <div className="vector2">
-          <Link to="/search">
-            <img src={searchImage} alt="can't load" />
-            
-            
-               
-                {/* <SearchComponent /> */}
-              </Link>
+            <img src={searchImage} onClick={searchHandler} alt="can't load" />
+            {showInput && (
+              <div className="searchInput">
+               <SearchComponent />
+              </div>
+            )}
           </div>
         </div>
       </div>

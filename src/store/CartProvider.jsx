@@ -85,7 +85,7 @@ const CartProvider = (props) => {
       const response = await fetch(
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
       );
-      const responseData = await response.json();
+      const responseData = await response.json()
       const fetchProducts = [];
       Object.values(responseData).map((item) => {
         return fetchProducts.push({
@@ -101,7 +101,7 @@ const CartProvider = (props) => {
     };
     fetchProducts();
   },[]);
-  console.log("checking", products);
+  console.log("Tesing in cartProvider, data coming from firebase", products);
 
   const cartContext = {
     items: cartState.items,
