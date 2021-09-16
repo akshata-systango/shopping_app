@@ -16,7 +16,9 @@ const Header = (props) => {
   const searchHandler = () => {
     setShowInput(true);
   };
-
+const hideSearchBar = () => {
+  setShowInput(false)
+}
   const InstallButtonHandler = () => {
     <Link to="/newPage" />;
   };
@@ -81,14 +83,14 @@ const Header = (props) => {
           <div className="vector2">
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
-              <div className="searchInput">
+              <div className="searchInput" id="search">
                <SearchComponent />
               </div>
             )}
           </div>
         </div>
       </div>
-      <div className="ractangle">
+      <div className="ractangle" onClick={hideSearchBar}>
         <p className="inviteLine">
           Invite Friends To Friends Festival And Get Up To $150 Bonus For Every
           Referral
