@@ -263,25 +263,8 @@ color: #FFFFFF;
 .para{
   font-weight: bolder;
 }
-.searching{
-  display: flex;
-  margin-top: 200px;
-  margin-left: 150px;
-  margin-right: 150px;
-}
 .searchbtn{
   height: 25px;
-}
-.listing{
-  margin-left: 170px;
-}
-.listingProductsDetails:hover{
-  background-color:lightgray;
-  margin-right: 220px;
-  
-}
-.mb-3-s{
-  border: 2px solid brown;
 }
 .searchInput{
   height: 20px;
