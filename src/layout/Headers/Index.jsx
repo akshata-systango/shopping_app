@@ -13,15 +13,18 @@ import SearchComponent from "./SearchComponent";
 
 const Header = (props) => {
   const [showInput, setShowInput] = useState(false);
+ 
+
   const searchHandler = () => {
     setShowInput(true);
   };
-const hideSearchBar = () => {
-  setShowInput(false)
-}
+  const hideSearchBar = () => {
+    setShowInput(false);
+  };
   const InstallButtonHandler = () => {
     <Link to="/newPage" />;
   };
+  
   // cartImage and counting the items
   const cartCtx = useContext(CartContext);
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
@@ -67,7 +70,7 @@ const hideSearchBar = () => {
                   <img src={cartImage} alt="can't load" />
                 </Badge>
               </IconButton>
-              {/* <span className="itemCount"> {numberOfCartItems}</span> */}
+              
             </div>
           </div>
           {/* user profile section*/}
@@ -80,11 +83,11 @@ const hideSearchBar = () => {
           </div>
 
           {/* searching item */}
-          <div className="vector2">
+          <div className="vector2" >
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
-              <div className="searchInput" id="search">
-               <SearchComponent />
+              <div className="searchInput" id="search" onClick={props.onSearchedIconClick}>
+                <SearchComponent setSearchedResult={props.setSearchedResult} />
               </div>
             )}
           </div>

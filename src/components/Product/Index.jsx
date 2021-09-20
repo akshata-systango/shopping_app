@@ -5,7 +5,7 @@ import Helper from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
 import CartContext from "../../store/CartContext";
 
-const Products = () => {
+const Products = (props) => {
   const cartCtx = useContext(CartContext);
   const Product = cartCtx.products;
   // setTimeout( () => console.log("lets check",Product.length), 3000);

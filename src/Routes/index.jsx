@@ -4,6 +4,9 @@ import { Suspense } from "react";
 import Header from "../layout/Headers/Index";
 import Cart from "../shared/components/cart";
 
+const ProductDetail = React.lazy(() =>
+  import("../layout/Headers/ProductDetail")
+);
 const AboutUsPage = React.lazy(() => import("../layout/Headers/AboutUsPage"));
 
 const UserAuthentication = React.lazy(() =>
@@ -13,21 +16,23 @@ const Products = React.lazy(() => import("../components/Product/Index"));
 const ContactUsPage = React.lazy(() =>
   import("../layout/Headers/ContactUsPage")
 );
-// const SearchComponent = React.lazy(() =>
-//   import("../layout/Headers/SearchComponent")
-// );
+
 const Routes = () => {
   const [showcartItem, setShowCartItem] = useState(false);
+  const [searchedResult, setSearchedResult] = useState([]);
+
   const ShowCartDetails = () => {
     setShowCartItem(true);
   };
   const HideCartDetails = () => {
     setShowCartItem(false);
   };
-
   return (
     <>
-      <Header onCartIconClick={ShowCartDetails} />
+      <Header
+        onCartIconClick={ShowCartDetails}
+        setSearchedResult={setSearchedResult}
+      />
       {showcartItem && <Cart onClose={HideCartDetails} />}
 
       <Switch>
@@ -36,7 +41,12 @@ const Routes = () => {
           <Route path="/authentication" component={UserAuthentication} />
           <Route path="/contact" component={ContactUsPage} />
           <Route path="/about" component={AboutUsPage} />
-          {/* <Route path="/search" component={SearchComponent} /> */}
+          <Route
+            path="/productDetail"
+            component={(props) => (
+              <ProductDetail {...props} searchedResult={searchedResult} />
+            )}
+          />
         </Suspense>
       </Switch>
     </>

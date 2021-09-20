@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import CartContext from "../../store/CartContext";
 import Select from "react-select";
-// import { Link } from "react-router-dom";
-// import Card from "../../shared/components/ProductCard/Index";
+import { useHistory } from "react-router-dom";
+// import ProductDetail from "./ProductDetail";
 
-const SearchComponent = () => {
-
+const SearchComponent = ({setSearchedResult}) => {
+const history  = useHistory()
   const cartCtx = useContext(CartContext);
   const [Data, setFilterData] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
 
   const onInputChange = (value) => {
     console.log("value:- ", value);
@@ -23,20 +24,16 @@ const SearchComponent = () => {
     label: item.detail,
     value: `${item.detail} ${item.brand}`,
   }));
+
   const onChange = (value) => {
     console.log("selected value is = ", value.label);
     const searchedResult = Data.filter((item) =>
       item.detail.includes(value.label)
     );
     console.log("searched result is:-", searchedResult);
-    // searchedResult.map((item) => (
-    //   <Card
-    //     imgsrc={item.imgsrc}
-    //     brand={item.brand}
-    //     detail={item.detail}
-    //     price={item.price}
-    //   />
-    // ));
+    setSearchedResult(searchedResult)
+    // ProductDetail(searchedResult);
+    return history.push("/productDetail");
   };
 
   return (
