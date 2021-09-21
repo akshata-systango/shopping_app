@@ -38,6 +38,7 @@ const Routes = () => {
       <Switch>
         <Suspense fallback={<div>Loading...</div>}>
           <Route exact path="/" component={Products} />
+          <Route path="/shop" component={Products} />
           <Route path="/authentication" component={UserAuthentication} />
           <Route path="/contact" component={ContactUsPage} />
           <Route path="/about" component={AboutUsPage} />

@@ -40,7 +40,7 @@ const ContactUsPage = () => {
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
             <FormControl
-              placeholder="Username"
+              // placeholder="Enter Your Name"
               aria-label="Username"
               aria-describedby="basic-addon1"
               ref={enterUsernameRef}
@@ -48,15 +48,24 @@ const ContactUsPage = () => {
           </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Text>Email</InputGroup.Text>
-            <FormControl aria-label="First name" ref={enterEmailRef} />
+            <FormControl
+              // placeholder="Enter Your Email"
+              aria-label="First name"
+              ref={enterEmailRef}
+            />
           </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Text>Phone</InputGroup.Text>
-            <FormControl aria-label="First name" ref={enterPhoneRef} />
+            <FormControl
+              // placeholder="Enter Your Contact Number"
+              aria-label="First name"
+              ref={enterPhoneRef}
+            />
           </InputGroup>
           <InputGroup>
             <InputGroup.Text>Message</InputGroup.Text>
             <FormControl
+              // placeholder="Enter Your Feedback"
               as="textarea"
               aria-label="With textarea"
               ref={enterMessageRef}
