@@ -22,13 +22,14 @@ const history  = useHistory()
   };
   const option = Data.map((item) => ({
     label: item.detail,
+    id:item.id,
     value: `${item.detail} ${item.brand}`,
   }));
 
   const onChange = (value) => {
-    console.log("selected value is = ", value.label);
+    console.log("selected value is = ", value);
     const searchedResult = Data.filter((item) =>
-      item.detail.includes(value.label)
+      item.id === value.id
     );
     console.log("searched result is:-", searchedResult);
     setSearchedResult(searchedResult)

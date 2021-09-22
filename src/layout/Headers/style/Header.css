@@ -42,7 +42,7 @@
       height: 19px;
       left: 480px;
       top: 27px;
-      background-color: white;
+      /* background-color: white; */
       font-family: Roboto;
       font-style: normal;
       font-weight: normal;
@@ -111,7 +111,7 @@
     bottom: 15.67%;
     border: none;
     height: 40px;
-    background-color: white;
+    /* background-color: white; */
     
     /* background: #010202; */
   }
@@ -123,7 +123,7 @@
     bottom: 16.33%;
     border: none;
     height: 40px;
-    background-color: white;
+    /* background-color: white; */
     
     /* background: #010202; */
   }
@@ -136,7 +136,7 @@
     bottom: 35.27%;
     border: none;
     height: 40px;
-    background-color: white;
+    /* background-color: white; */
     
     /* background: #010202; */
   }

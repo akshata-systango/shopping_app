@@ -7,6 +7,7 @@
     border: 2px solid brown;
    align-items: center;
    text-transform: uppercase;
+   background-color: white;
 }
 .btns:hover{
     color: white;

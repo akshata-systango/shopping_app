@@ -11,6 +11,7 @@
 .card{
     width:15rem;
     top:295px;
+    background-color: white;
 }
 .image{
 position: absolute;
