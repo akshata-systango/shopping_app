@@ -8,21 +8,27 @@ import AddProductQuantity from "../../components/Product/ProductQuantityForm";
 
 const ProductDetail = (props) => {
   const cartCtx = useContext(CartContext);
+  const [disable, setDisable] = useState(true);
+  const [name, setName] = useState("");
+  const [review, setReview] = useState("");
+  let valueList = [];
+
   // document.getElementById('atcButton').disabled="true"
-  const [size, setSize] = useState(38);
+  const [size, setSize] = useState();
   toast.configure();
   const { searchedResult } = props;
   console.log("results is:-", searchedResult);
 
   const showAddToCartButton = (event) => {
     setSize(event.target.value);
-    document.getElementById("atcButton").disabled = "false";
+    // setDisable(false)
   };
   const AddToCartHandler = (amount) => {
     toast.success("Item added to cart !", {
       position: toast.POSITION.BOTTOM_CENTER,
       draggablePercent: 60,
     });
+
     searchedResult.map((item) =>
       cartCtx.addItem({
         id: item.id,
@@ -35,6 +41,14 @@ const ProductDetail = (props) => {
       })
     );
   };
+
+  const AddReview = (event) => {
+    event.preventDefault();
+    valueList.push(name, review);
+    console.log("list is", valueList);
+    // alert("clicked");
+  };
+
   return (
     <div className="col-sm-12 col-md-12 col-lg-12">
       {searchedResult?.map((item) => (
@@ -92,10 +106,12 @@ const ProductDetail = (props) => {
                 ${item.price}
                 <small>*includes tax</small>
               </h3>
+              <span className="price-span">$1650 </span>
+
               <br />
               <div>
                 <label for="size">Select Size:</label>
-                <select name="size" id="size">
+                <select name="size" id="size" onClick={() => setDisable(false)}>
                   <option value={ProductSize[0]} onClick={showAddToCartButton}>
                     38
                   </option>
@@ -160,7 +176,7 @@ const ProductDetail = (props) => {
                     <p>
                       polyester Super combed Cotton Rich fabric Ribbed round
                       neck to prevent sagging Regular fit Label free for all day
-                      comfort
+                      comfort Delivery : USA Europe
                     </p>
                   </div>
                   <div className="tab-pane fade" id="specifications">
@@ -174,20 +190,25 @@ const ProductDetail = (props) => {
                   </div>
                   <div className="tab-pane fade" id="reviews">
                     <br />
-                    <form
-                      method="post"
-                      className="well padding-bottom-10"
-                      onsubmit="return false;"
-                    >
+                    <form className="well padding-bottom-10">
+                      <input
+                        type="text"
+                        placeholder="enter your name"
+                        className="form-control"
+                        onChange={(event) => setName(event.target.value)}
+                      />
+                      <br />
                       <textarea
                         rows="2"
                         className="form-control"
                         placeholder="Write a review"
+                        onChange={(event) => setReview(event.target.value)}
                       ></textarea>
                       <div className="margin-top-10">
                         <button
-                          type="submit"
+                          type="button"
                           className="btn btn-sm btn-primary pull-right"
+                          onClick={AddReview}
                         >
                           Submit Review
                         </button>
@@ -235,15 +256,16 @@ const ProductDetail = (props) => {
                     </form>
 
                     <div className="chat-body no-padding profile-message">
-                      <ul>
-                        <li className="message">
-                          <img
-                            src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                            className="online"
-                          />
-                          <span className="message-text">
-                            <a href="javascript:void(0);" className="username">
-                              Alisha Molly
+                      {valueList.map((item) => (
+                        <ul>
+                          <li className="message">
+                            <span className="message-text">
+                              <b
+                                href="javascript:void(0);"
+                                className="username"
+                              >
+                                {item.name}
+                              </b>
                               <span className="badge">Purchase Verified</span>
                               <span className="pull-right">
                                 <i className="fa fa-star fa-2x text-primary"></i>
@@ -252,37 +274,40 @@ const ProductDetail = (props) => {
                                 <i className="fa fa-star fa-2x text-primary"></i>
                                 <i className="fa fa-star fa-2x text-muted"></i>
                               </span>
-                            </a>
-                            Can't divide were divide fish forth fish to. Was
+                              <br />
+                              {item.review}
+                              {/* Can't divide were divide fish forth fish to. Was
                             can't form the, living life grass darkness very
                             image let unto fowl isn't in blessed fill life
-                            yielding above all moved
-                          </span>
-                          <ul className="list-inline font-xs">
-                            <li>
-                              <a
+                            yielding above all moved */}
+                            </span>
+                            <ul className="list-inline font-xs">
+                              <li>
+                                <a
+                                  href="javascript:void(0);"
+                                  className="text-info"
+                                >
+                                  <i className="fa fa-thumbs-up"></i> This was
+                                  helpful (22)
+                                </a>
+                              </li>
+                              <li className="pull-right">
+                                <small className="text-muted pull-right ultra-light">
+                                  Posted 1 year ago
+                                </small>
+                              </li>
+                            </ul>
+                          </li>
+                          <br />
+                          <br />
+                          <li className="message">
+                            <span className="message-text">
+                              <b
                                 href="javascript:void(0);"
-                                className="text-info"
+                                className="username"
                               >
-                                <i className="fa fa-thumbs-up"></i> This was
-                                helpful (22)
-                              </a>
-                            </li>
-                            <li className="pull-right">
-                              <small className="text-muted pull-right ultra-light">
-                                Posted 1 year ago
-                              </small>
-                            </li>
-                          </ul>
-                        </li>
-                        <li className="message">
-                          <img
-                            src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                            className="online"
-                          />
-                          <span className="message-text">
-                            <a href="javascript:void(0);" className="username">
-                              Aragon Zarko
+                                Aragon Zarko
+                              </b>
                               <span className="badge">Purchase Verified</span>
                               <span className="pull-right">
                                 <i className="fa fa-star fa-2x text-primary"></i>
@@ -291,27 +316,66 @@ const ProductDetail = (props) => {
                                 <i className="fa fa-star fa-2x text-primary"></i>
                                 <i className="fa fa-star fa-2x text-primary"></i>
                               </span>
-                            </a>
-                            Excellent product, love it!
-                          </span>
-                          <ul className="list-inline font-xs">
-                            <li>
-                              <a
+                              <br />
+                              Excellent product, love it!
+                            </span>
+                            <ul className="list-inline font-xs">
+                              <li>
+                                <a
+                                  href="javascript:void(0);"
+                                  className="text-info"
+                                >
+                                  <i className="fa fa-thumbs-up"></i> This was
+                                  helpful (22)
+                                </a>
+                              </li>
+                              <li className="pull-right">
+                                <small className="text-muted pull-right ultra-light">
+                                  Posted 1 year ago
+                                </small>
+                              </li>
+                            </ul>
+                          </li>
+                          <br />
+                          <br />
+                          <li className="message">
+                            <span className="message-text">
+                              <b
                                 href="javascript:void(0);"
-                                className="text-info"
+                                className="username"
                               >
-                                <i className="fa fa-thumbs-up"></i> This was
-                                helpful (22)
-                              </a>
-                            </li>
-                            <li className="pull-right">
-                              <small className="text-muted pull-right ultra-light">
-                                Posted 1 year ago
-                              </small>
-                            </li>
-                          </ul>
-                        </li>
-                      </ul>
+                                {item.name}
+                              </b>
+                              <span className="badge">Purchase Verified</span>
+                              <span className="pull-right">
+                                <i className="fa fa-star fa-2x text-primary"></i>
+                                <i className="fa fa-star fa-2x text-primary"></i>
+                                <i className="fa fa-star fa-2x text-primary"></i>
+                                <i className="fa fa-star fa-2x text-primary"></i>
+                                <i className="fa fa-star fa-2x text-primary"></i>
+                              </span>
+                              <br />
+                              {item.review}
+                            </span>
+                            <ul className="list-inline font-xs">
+                              <li>
+                                <a
+                                  href="javascript:void(0);"
+                                  className="text-info"
+                                >
+                                  <i className="fa fa-thumbs-up"></i> This was
+                                  helpful (22)
+                                </a>
+                              </li>
+                              <li className="pull-right">
+                                <small className="text-muted pull-right ultra-light">
+                                  Posted 1 year ago
+                                </small>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -323,6 +387,7 @@ const ProductDetail = (props) => {
                     href="javascript:void(0);"
                     className="btn btn-light btn-lg"
                     id="atcButton"
+                    disabled={disable}
                   >
                     <AddProductQuantity
                       id={item.id}

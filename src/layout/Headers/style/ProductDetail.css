@@ -341,3 +341,11 @@ body{
     color: white;
     background-color: #8a2b06;
 }
+.price-span{
+    color:red;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: line-through;
+    margin-left: 3px;
+    display: inline-block;
+}
