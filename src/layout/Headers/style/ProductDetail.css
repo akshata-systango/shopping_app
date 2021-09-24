@@ -349,3 +349,14 @@ body{
     margin-left: 3px;
     display: inline-block;
 }
+.sizeSelection{
+    width:250px;
+    
+}
+.reviewValue{
+    margin-top: 550px;
+}
+.chat-body{
+    overflow-y: auto;
+    height: 150px
+}

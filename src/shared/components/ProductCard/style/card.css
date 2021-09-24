@@ -1,0 +1,45 @@
+.displayButtons{
+    display: flex;
+    justify-content: space-around;
+}
+.availabilityMessage{
+    color:lightgray;
+}
+.button-styling{
+    padding: 5px 40px;
+}
+.card{
+    width:15rem;
+    top:295px;
+    background-color: white;
+}
+.image{
+position: absolute;
+width: 262px;
+height: 349px;
+left: 25px;
+top: 317px;
+}
+.size{
+    height: 35px;
+    border-radius: 30px;
+    margin: 2px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+    justify-content: space-between;
+} 
+.amountCount{
+    display: flex;
+    justify-content: space-between;
+}
+.title1{
+    height:48px;
+    font-size: 15px;
+}
+.category{
+    color: grey;
+}

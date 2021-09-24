@@ -1,0 +1,16 @@
+.line{position: absolute;
+    width: 277px;
+    height: 14px;
+    left: 24px;
+    top: 144px;
+    
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    
+    text-transform: capitalize;
+    
+    color: #000000;}
