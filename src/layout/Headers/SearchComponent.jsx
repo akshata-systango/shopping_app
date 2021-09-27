@@ -16,7 +16,7 @@ const history  = useHistory()
     setInputValue(value);
     console.log("inputValue:- ", value);
     const FilteredData = cartCtx.products.filter((item) => {
-      return item.detail.toLowerCase().includes(value.toLowerCase());
+      return item.detail?.toUpperCase().includes(value.toUpperCase());
     });
     setFilterData(FilteredData);
   };

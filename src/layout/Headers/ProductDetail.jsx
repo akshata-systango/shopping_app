@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import CartContext from "../../store/CartContext";
 import "./style/ProductDetail.css";
 import ProductSize from "../../utils/Constant";
@@ -14,6 +14,7 @@ const ProductDetail = (props) => {
   const [disable, setDisable] = useState(true);
   const [size, setSize] = useState();
   let [values, setValues] = useState([]);
+  const [product, setProduct] = useState([]);
 
   const nameInputRef = useRef();
   const reviewInputRef = useRef();
@@ -30,6 +31,7 @@ const ProductDetail = (props) => {
       position: toast.POSITION.BOTTOM_CENTER,
       draggablePercent: 60,
     });
+    console.log("qwer", searchedResult.id);
 
     searchedResult.map((item) =>
       cartCtx.addItem({
@@ -51,26 +53,43 @@ const ProductDetail = (props) => {
     const reviewers = {
       name: enteredName,
       review: enteredReview,
-    }
-    let newValues = values.concat(reviewers)
+    };
+    let newValues = values.concat(reviewers);
     setValues(newValues);
-    alert('Review added successfully')
-    document.getElementById("form").reset()
+    alert("Review added successfully");
+    document.getElementById("form").reset();
     console.log("list is", newValues);
     await fetch(
       "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/review.json",
       {
         method: "POST",
         body: JSON.stringify({
-          reviewer: {
+         
             name: enteredName,
             message: enteredReview,
-          },
+          
         }),
       }
     );
   };
-
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(
+        "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/review.json"
+      );
+      const responseData = await response.json();
+      console.log("responsedata",responseData)
+      const fetchReviews = [];
+      Object.values(responseData).map((item) => {
+        return fetchReviews.push({
+          message:item.message,
+          name:item.name
+        });
+      });
+      setProduct(fetchReviews);
+    };
+    fetchProducts();
+  }, []);
   const option = [
     { value: ProductSize[0], onclick: { showAddToCartButton }, label: 38 },
     { value: ProductSize[1], onclick: { showAddToCartButton }, label: 39 },
@@ -272,8 +291,43 @@ const ProductDetail = (props) => {
                         </Link>
                       </div>
                     </form>
-
                     <div className="chat-body no-padding profile-message">
+                      {product.map((key) => {
+                        return (
+                          <ul>
+                            <li className="message">
+                              <span className="message-text">
+                                <b className="username">{key.name}</b>
+                                <span className="badge">Purchase Verified</span>
+                                <span className="pull-right">
+                                  <i className="fa fa-star fa-2x text-primary"></i>
+                                  <i className="fa fa-star fa-2x text-primary"></i>
+                                  <i className="fa fa-star fa-2x text-primary"></i>
+                                  <i className="fa fa-star fa-2x text-primary"></i>
+                                  <i className="fa fa-star fa-2x text-primary"></i>
+                                </span>
+                                <p>{key.message}</p>
+                              </span>
+                            </li>
+                            <ul className="list-inline font-xs">
+                              <li>
+                                <Link to="#" className="text-info">
+                                  <i className="fa fa-thumbs-up"></i> This was
+                                  helpful (22)
+                                </Link>
+                              </li>
+                              <li className="pull-right">
+                                <small className="text-muted pull-right ultra-light">
+                                  Posted 1 year ago
+                                </small>
+                              </li>
+                            </ul>
+                          </ul>
+                        );
+                      })}
+                    </div>
+
+                    <div >
                       {values.map((key) => {
                         return (
                           <ul>
