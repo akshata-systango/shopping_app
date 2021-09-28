@@ -31,7 +31,6 @@ const ProductDetail = (props) => {
       position: toast.POSITION.BOTTOM_CENTER,
       draggablePercent: 60,
     });
-    console.log("qwer", searchedResult.id);
 
     searchedResult.map((item) =>
       cartCtx.addItem({
@@ -64,10 +63,8 @@ const ProductDetail = (props) => {
       {
         method: "POST",
         body: JSON.stringify({
-         
-            name: enteredName,
-            message: enteredReview,
-          
+          name: enteredName,
+          message: enteredReview,
         }),
       }
     );
@@ -78,12 +75,12 @@ const ProductDetail = (props) => {
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/review.json"
       );
       const responseData = await response.json();
-      console.log("responsedata",responseData)
+      console.log("responsedata", responseData);
       const fetchReviews = [];
       Object.values(responseData).map((item) => {
         return fetchReviews.push({
-          message:item.message,
-          name:item.name
+          message: item.message,
+          name: item.name,
         });
       });
       setProduct(fetchReviews);
@@ -100,7 +97,7 @@ const ProductDetail = (props) => {
 
   return (
     <div className="col-sm-12 col-md-12 col-lg-12">
-      {searchedResult?.map((item) => (
+      {searchedResult.map((item) => (
         <div className="product-content product-wrap clearfix product-deatil">
           <div className="row">
             <div className="col-md-5 col-sm-12 col-xs-12">
@@ -327,7 +324,7 @@ const ProductDetail = (props) => {
                       })}
                     </div>
 
-                    <div >
+                    <div>
                       {values.map((key) => {
                         return (
                           <ul>

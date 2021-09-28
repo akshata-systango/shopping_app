@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Header from "../layout/Headers/Index";
 import Cart from "../shared/components/cart";
 
+
 const ProductDetail = React.lazy(() =>
   import("../layout/Headers/ProductDetail")
 );
