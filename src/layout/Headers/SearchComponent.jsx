@@ -36,7 +36,7 @@ console.log('props', props)
     console.log("searched result is:-", searchedResult);
     setSearchedResult(searchedResult)
     // ProductDetail(searchedResult);
-    return history.push("/productDetail?id=" + value.id.id);
+    return history.push("/productDetail/" + value.id.id);
   };
 
   return (

@@ -519,6 +519,7 @@ table.shoping-cart-table tr td:last-child {
 
 .fitThecard{
     display: flex;
+    justify-content: space-evenly;
 }
 .blink_me {
     animation: blinker 5s linear infinite;
@@ -544,3 +545,6 @@ table.shoping-cart-table tr td:last-child {
       height: 20px;
       margin-top: 12px;
   }
+  /* .container{
+      width: 250px;
+  } */

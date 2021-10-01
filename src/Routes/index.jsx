@@ -44,7 +44,7 @@ const Routes = () => {
           <Route path="/contact" component={ContactUsPage} />
           <Route path="/about" component={AboutUsPage} />
           <Route
-            path="/productDetail"
+            path="/productDetail/:id"
             component={(props) => (
               <ProductDetail {...props} searchedResult={searchedResult} />
             )}

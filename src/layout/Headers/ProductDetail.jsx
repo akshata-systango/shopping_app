@@ -21,11 +21,11 @@ const ProductDetail = (props) => {
 
   toast.configure();
   const { searchedResult } = props;
+  console.log("props are:-", props)
   console.log(
     "results is:-",
     searchedResult.map((item) => item.brand)
   );
-
   const showAddToCartButton = (event) => {
     setSize(event.target.value);
   };
@@ -46,6 +46,8 @@ const ProductDetail = (props) => {
       })
     );
   };
+  const MatchedId = searchedResult.map((item) => item.id);
+  console.log("Matched id", MatchedId);
   const matchedBrand = searchedResult.map((item) => item.brand);
   const relatedProduct = cartCtx.products.filter((item) => {
     return item.id.brand === matchedBrand.toString();
@@ -431,31 +433,31 @@ const ProductDetail = (props) => {
       </div>
       <div className="fitThecard">
         {relatedProduct.map((item) => (
-          <div className="container">
+          <div>
             <div className="row">
               <div className="col-md-3">
                 <div className="ibox"></div>
                 <div className="ibox-content product-box">
                   <div className="product-imitation">
-                    <img src={item.imgsrc} className="relatedProductImage" alt="will shown soon"/>
+                    <img
+                      src={item.imgsrc}
+                      className="relatedProductImage"
+                      alt="will shown soon"
+                    />
                   </div>
                   <div className="product-desc">
                     <span className="product-price">${item.price}</span>
                     <small className="text-muted">
                       {item.category.toUpperCase()}
                     </small>
-                    <Link className="product-name">
-                      {item.detail}
-                    </Link>
+                    <Link className="product-name">{item.detail}</Link>
 
                     <div className="small m-t-xs">
                       Clothing worn for a special occasion or popular during a
                       specific period.
                     </div>
                     <div class="m-t text-righ">
-                      <Link
-                        className="btn btn-xs btn-outline btn-primary"
-                      >
+                      <Link className="btn btn-xs btn-outline btn-primary">
                         Info <i className="fa fa-long-arrow-right"></i>
                       </Link>
                     </div>
