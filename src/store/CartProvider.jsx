@@ -86,15 +86,16 @@ const CartProvider = (props) => {
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
       );
       const responseData = await response.json()
+      console.log("rd",responseData)
       const fetchProducts = [];
-      Object.values(responseData).map((item) => {
+      Object.keys(responseData).map((item) => {
         return fetchProducts.push({
           id: item,
-          imgsrc: item.imgsrc,
-          brand: item.brand,
-          category: item.category,
-          detail: item.detail,
-          price: item.price,
+          imgsrc: responseData[item].imgsrc,
+          brand: responseData[item].brand,
+          category: responseData[item].category,
+          detail: responseData[item].detail,
+          price: responseData[item].price,
         });
       });
       setProduct(fetchProducts)

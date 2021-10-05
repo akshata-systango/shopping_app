@@ -18,10 +18,11 @@ const ProductDetail = (props) => {
 
   const nameInputRef = useRef();
   const reviewInputRef = useRef();
-
   toast.configure();
   const { searchedResult } = props;
-  console.log("props are:-", props)
+  console.log("props are:-", props);
+  const data = props.match.params.id;
+  console.log("data=", data);
   console.log(
     "results is:-",
     searchedResult.map((item) => item.brand)
@@ -47,10 +48,10 @@ const ProductDetail = (props) => {
     );
   };
   const MatchedId = searchedResult.map((item) => item.id);
-  console.log("Matched id", MatchedId);
+  console.log("Matched id", MatchedId.toString());
   const matchedBrand = searchedResult.map((item) => item.brand);
   const relatedProduct = cartCtx.products.filter((item) => {
-    return item.id.brand === matchedBrand.toString();
+    return item.brand === matchedBrand.toString();
   });
   console.log("related products are:-", relatedProduct);
 
@@ -68,7 +69,7 @@ const ProductDetail = (props) => {
     document.getElementById("form").reset();
     console.log("list is", newValues);
     await fetch(
-      `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/review.json`,
+      `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${MatchedId.toString()}/review.json`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -81,18 +82,18 @@ const ProductDetail = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/review.json"
+        `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${MatchedId.toString()}/review.json`
       );
       const responseData = await response.json();
       console.log("responsedata", responseData);
-      const fetchReviews = [];
-      Object.values(responseData).map((item) => {
-        return fetchReviews.push({
-          message: item.message,
-          name: item.name,
-        });
-      });
-      setProduct(fetchReviews);
+      // const fetchReviews = [];
+      // Object.keys(responseData).map((item) => {
+      //   return fetchReviews.push({
+      //     message: responseData[item].message,
+      //     name: responseData[item].name,
+      //   });
+      // });
+      // setProduct(fetchReviews);
     };
     fetchProducts();
   }, []);
