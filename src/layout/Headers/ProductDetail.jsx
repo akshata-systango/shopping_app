@@ -86,14 +86,15 @@ const ProductDetail = (props) => {
       );
       const responseData = await response.json();
       console.log("responsedata", responseData);
-      // const fetchReviews = [];
-      // Object.keys(responseData).map((item) => {
-      //   return fetchReviews.push({
-      //     message: responseData[item].message,
-      //     name: responseData[item].name,
-      //   });
-      // });
-      // setProduct(fetchReviews);
+      const fetchReviews = [];
+      Object.keys(responseData)?.map((item) => {
+        console.log("items", responseData[item])
+        return fetchReviews?.push({
+          message: responseData[item].message,
+          name: responseData[item].name,
+        });
+      });
+      setProduct(fetchReviews);
     };
     fetchProducts();
   }, []);
