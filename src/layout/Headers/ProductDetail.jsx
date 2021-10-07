@@ -1,5 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
-import CartContext from "../../store/CartContext";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./style/ProductDetail.css";
 import ProductSize from "../../utils/Constant";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,25 +7,50 @@ import AddProductQuantity from "../../components/Product/ProductQuantityForm";
 import { Link } from "react-router-dom";
 import Select from "react-select";
 import ReactTooltip from "react-tooltip";
+import CartContext from "../../store/CartContext";
 
 const ProductDetail = (props) => {
-  const cartCtx = useContext(CartContext);
+  const cartCtx = useContext(CartContext)
+  const [allProduct, setAllProduct] = useState([]);
+  const { searchedResult } = props;
   const [disable, setDisable] = useState(true);
   const [size, setSize] = useState();
   let [values, setValues] = useState([]);
   const [product, setProduct] = useState([]);
-
   const nameInputRef = useRef();
   const reviewInputRef = useRef();
   toast.configure();
-  const { searchedResult } = props;
+
   console.log("props are:-", props);
   const data = props.match.params.id;
   console.log("data=", data);
-  console.log(
-    "results is:-",
-    searchedResult.map((item) => item.brand)
-  );
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(
+        "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
+      );
+      const responseData = await response.json();
+      console.log("rd", responseData);
+      const fetchProducts = [];
+      Object.keys(responseData).map((item) => {
+        return fetchProducts.push({
+          id: item,
+          imgsrc: responseData[item].imgsrc,
+          brand: responseData[item].brand,
+          category: responseData[item].category,
+          detail: responseData[item].detail,
+          price: responseData[item].price,
+        });
+      });
+      setAllProduct(fetchProducts);
+    };
+    fetchProducts();
+  }, []);
+  console.log("products = ", allProduct);
+  const SearchedProduct = allProduct.filter((item) => item.id === data);
+  console.log(SearchedProduct)
+
   const showAddToCartButton = (event) => {
     setSize(event.target.value);
   };
@@ -47,10 +71,10 @@ const ProductDetail = (props) => {
       })
     );
   };
-  const MatchedId = searchedResult.map((item) => item.id);
-  console.log("Matched id", MatchedId.toString());
-  const matchedBrand = searchedResult.map((item) => item.brand);
-  const relatedProduct = cartCtx.products.filter((item) => {
+
+  const matchedBrand = SearchedProduct.map((item) => item.brand);
+  console.log("matched barnd=", matchedBrand)
+  const relatedProduct = allProduct.filter((item) => {
     return item.brand === matchedBrand.toString();
   });
   console.log("related products are:-", relatedProduct);
@@ -63,13 +87,14 @@ const ProductDetail = (props) => {
       name: enteredName,
       review: enteredReview,
     };
+
     let newValues = values.concat(reviewers);
     setValues(newValues);
     alert("Review added successfully");
     document.getElementById("form").reset();
     console.log("list is", newValues);
     await fetch(
-      `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${MatchedId.toString()}/review.json`,
+      `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`,
       {
         method: "POST",
         body: JSON.stringify({
@@ -82,13 +107,14 @@ const ProductDetail = (props) => {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${MatchedId.toString()}/review.json`
+        `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`
       );
       const responseData = await response.json();
       console.log("responsedata", responseData);
+      if (!responseData) return;
       const fetchReviews = [];
-      Object.keys(responseData)?.map((item) => {
-        console.log("items", responseData[item])
+      Object.keys(responseData).map((item) => {
+        console.log("items", responseData[item]);
         return fetchReviews?.push({
           message: responseData[item].message,
           name: responseData[item].name,
@@ -110,7 +136,7 @@ const ProductDetail = (props) => {
   return (
     <>
       <div className="col-sm-12 col-md-12 col-lg-12">
-        {searchedResult.map((item) => (
+        {SearchedProduct.map((item) => (
           <div className="product-content product-wrap clearfix product-deatil">
             <div className="row">
               <div className="col-md-5 col-sm-12 col-xs-12">
@@ -434,7 +460,7 @@ const ProductDetail = (props) => {
         </p>
       </div>
       <div className="fitThecard">
-        {relatedProduct.map((item) => (
+        {relatedProduct?.map((item) => (
           <div>
             <div className="row">
               <div className="col-md-3">
