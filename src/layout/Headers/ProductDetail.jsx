@@ -21,9 +21,9 @@ const ProductDetail = (props) => {
   const reviewInputRef = useRef();
   toast.configure();
 
-  console.log("props are:-", props);
+  // console.log("props are:-", props);
   const data = props.match.params.id;
-  console.log("data=", data);
+  // console.log("data =", data);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,7 +31,7 @@ const ProductDetail = (props) => {
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
       );
       const responseData = await response.json();
-      console.log("rd", responseData);
+      // console.log("response data:-", responseData);
       const fetchProducts = [];
       Object.keys(responseData).map((item) => {
         return fetchProducts.push({
@@ -47,9 +47,9 @@ const ProductDetail = (props) => {
     };
     fetchProducts();
   }, []);
-  console.log("products = ", allProduct);
+  // console.log("products = ", allProduct);
   const SearchedProduct = allProduct.filter((item) => item.id === data);
-  console.log(SearchedProduct)
+  // console.log("search porduct is:-",SearchedProduct)
 
   const showAddToCartButton = (event) => {
     setSize(event.target.value);
@@ -77,7 +77,7 @@ const ProductDetail = (props) => {
   const relatedProduct = allProduct.filter((item) => {
     return item.brand === matchedBrand.toString();
   });
-  console.log("related products are:-", relatedProduct);
+  // console.log("related products are:-", relatedProduct);
 
   const AddReview = async (event) => {
     event.preventDefault();
@@ -92,7 +92,7 @@ const ProductDetail = (props) => {
     setValues(newValues);
     alert("Review added successfully");
     document.getElementById("form").reset();
-    console.log("list is", newValues);
+    // console.log("list is", newValues);
     await fetch(
       `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`,
       {
@@ -110,11 +110,11 @@ const ProductDetail = (props) => {
         `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`
       );
       const responseData = await response.json();
-      console.log("responsedata", responseData);
+      // console.log("responsedata", responseData);
       if (!responseData) return;
       const fetchReviews = [];
       Object.keys(responseData).map((item) => {
-        console.log("items", responseData[item]);
+        // console.log("items are:-", responseData[item]);
         return fetchReviews?.push({
           message: responseData[item].message,
           name: responseData[item].name,
@@ -123,7 +123,7 @@ const ProductDetail = (props) => {
       setProduct(fetchReviews);
     };
     fetchProducts();
-  }, []);
+  });
 
   const option = [
     { value: ProductSize[0], onclick: { showAddToCartButton }, label: 38 },
