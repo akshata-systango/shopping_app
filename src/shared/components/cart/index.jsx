@@ -4,8 +4,7 @@ import "./style/cart.css";
 import CartItems from "./CartItem";
 import CartContext from "../../../store/CartContext";
 import CheckOutDetailForm from "../../../components/CartCheckout";
-import pt from 'prop-types';
-
+import pt from "prop-types";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
@@ -15,7 +14,6 @@ const Cart = (props) => {
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
-  // console.log("items check", cartCtx.items)
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem(item);
@@ -23,16 +21,16 @@ const Cart = (props) => {
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
   };
- 
+
   const OrderButtonHandler = () => {
     setOrderPlaced(true);
-    const hide = document.getElementById('cartItem')
+    const hide = document.getElementById("cartItem");
     if (hide.style.display === "none") {
       hide.style.display = "block";
     } else {
       hide.style.display = "none";
     }
-  }
+  };
 
   const SubmitOrderHandler = async (userData) => {
     setOrderSubmitted(true);
@@ -52,8 +50,7 @@ const Cart = (props) => {
   };
 
   const cartItem = (
-    <ul className="cart-items" id="cartItem">
-    
+    <ul className="cart-items" id="cartItem" title="cart-item">
       {cartCtx.items.map((item) => (
         <CartItems
           key={item.id}
@@ -68,7 +65,6 @@ const Cart = (props) => {
           onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
-      
     </ul>
   );
 
@@ -77,12 +73,10 @@ const Cart = (props) => {
       <button className="button--alt" onClick={props.onClose}>
         Close
       </button>
-    
+
       {hasItems && (
         <button className="button" onClick={OrderButtonHandler}>
-         
-         Place Order
-         
+          Place Order
         </button>
       )}
     </div>
@@ -90,26 +84,23 @@ const Cart = (props) => {
 
   const cartModal = (
     <React.Fragment>
-      <div id="cartItem">
-      {cartItem} 
-      </div>
+      <div id="cartItem">{cartItem}</div>
 
       <div className="total">
         <div className="final">
           <span className="amount">Amount</span>
           <span className="price">{totalAmount}</span>
         </div>
-       
+
         {orderPlaced && (
           <CheckOutDetailForm
             onConfirm={SubmitOrderHandler}
             onCancel={props.onClose}
           />
         )}
-       
+
         {!orderPlaced && hideButtons}
       </div>
-     
     </React.Fragment>
   );
   const submittingModelData = <p>Sending the data</p>;
@@ -134,6 +125,6 @@ const Cart = (props) => {
 };
 
 Cart.propTypes = {
-onClose : pt.bool.isRequired, 
-}
+  onClose: pt.bool,
+};
 export default Cart;

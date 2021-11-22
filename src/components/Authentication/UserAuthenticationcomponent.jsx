@@ -11,6 +11,7 @@ const UserAuthentication = () => {
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
+    
   };
 
   const submitHandler = (event) => {
@@ -67,7 +68,7 @@ const UserAuthentication = () => {
   return (
     <>
       <div className="authform">
-        <p className="h5 text-center mb-4">{isLogin ? "Login" : "Sign Up"}</p>
+        <p className="h5 text-center mb-4" role="paragraph">{isLogin ? "Login" : "Sign Up"}</p>
 
         <form onSubmit={submitHandler}>
           <div className="grey-text">
@@ -75,6 +76,7 @@ const UserAuthentication = () => {
             <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
             <FormControl
+            type="input"
               placeholder="enter email"
               aria-label="Username"
               aria-describedby="basic-addon1"
@@ -86,6 +88,7 @@ const UserAuthentication = () => {
             <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
             <FormControl
+            type="input"
               placeholder="enter password"
               aria-label="Username"
               aria-describedby="basic-addon1"
@@ -96,11 +99,11 @@ const UserAuthentication = () => {
           </div>
           <div className="text-center">
             {!isLoading && (
-              <Button variant="outline-danger" className="buttonss">
+              <Button variant="outline-danger" className="buttonss" data-testid="login-button" >
                 {isLogin ? "Login" : "Create Account"}
               </Button>
             )}
-            {isLoading && <p>Sending request...</p>}
+            {isLoading && <p >Sending request...</p>}
             <Button
               variant="outline-danger"
               className="buttonss"

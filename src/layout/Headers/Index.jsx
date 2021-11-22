@@ -35,7 +35,7 @@ const Header = (props) => {
     <React.Fragment>
       <div className="w3-row">
         <div className="w3-third w3-container">
-          <img src={systangoLogo} alt="can't load" className="sysImage" />
+          <img src={systangoLogo} alt="can't load" className="sysImage" role="img" />
         </div>
         <div className="w3-third w3-container">
           <div>
@@ -86,7 +86,7 @@ const Header = (props) => {
           <div className="vector2" >
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
-              <div className="searchInput" id="search" onClick={props.onSearchedIconClick}>
+              <div className="searchInput" id="search" onClick={props.onSearchedIconClick} role="div">
                 <SearchComponent setSearchedResult={props.setSearchedResult} />
               </div>
             )}
@@ -94,7 +94,7 @@ const Header = (props) => {
         </div>
       </div>
       <div className="ractangle" onClick={hideSearchBar}>
-        <p className="inviteLine">
+        <p className="inviteLine" role="paragraph">
           Invite Friends To Friends Festival And Get Up To $150 Bonus For Every
           Referral
         </p>
@@ -111,7 +111,7 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  onCartIconClick: pt.func.isRequired,
+  onCartIconClick: pt.func,
 };
 
 export default Header;

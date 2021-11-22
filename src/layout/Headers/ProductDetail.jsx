@@ -10,7 +10,7 @@ import ReactTooltip from "react-tooltip";
 import CartContext from "../../store/CartContext";
 
 const ProductDetail = (props) => {
-  const cartCtx = useContext(CartContext)
+  const cartCtx = useContext(CartContext);
   const [allProduct, setAllProduct] = useState([]);
   const { searchedResult } = props;
   const [disable, setDisable] = useState(true);
@@ -22,7 +22,7 @@ const ProductDetail = (props) => {
   toast.configure();
 
   // console.log("props are:-", props);
-  const data = props.match.params.id;
+  const data = props.match?.params.id;
   // console.log("data =", data);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const ProductDetail = (props) => {
   };
 
   const matchedBrand = SearchedProduct.map((item) => item.brand);
-  console.log("matched barnd=", matchedBrand)
+  // console.log("matched barnd=", matchedBrand);
   const relatedProduct = allProduct.filter((item) => {
     return item.brand === matchedBrand.toString();
   });
@@ -136,8 +136,11 @@ const ProductDetail = (props) => {
   return (
     <>
       <div className="col-sm-12 col-md-12 col-lg-12">
-        {SearchedProduct.map((item) => (
-          <div className="product-content product-wrap clearfix product-deatil">
+        {SearchedProduct.map((item, index) => (
+          <div
+            className="product-content product-wrap clearfix product-deatil"
+            data-testId={`productSearching-${index}`}
+          >
             <div className="row">
               <div className="col-md-5 col-sm-12 col-xs-12">
                 <div className="product-image">
@@ -147,7 +150,7 @@ const ProductDetail = (props) => {
                         <img
                           src={item.imgsrc}
                           className="img-responsive"
-                          alt="can not show"
+                          alt="Can't show"
                         />
                       </div>
                     </div>
@@ -442,18 +445,19 @@ const ProductDetail = (props) => {
         ))}
       </div>
       <div className="blink_me">
-        <p className="fontDec">
+        <p className="fontDec" role="paragraph">
           More Results are
           <svg
+          data-testid="svgele"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-chevron-compact-right"
+            className="bi bi-chevron-compact-right"
             viewBox="0 0 16 16"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"
             />
           </svg>
@@ -484,7 +488,7 @@ const ProductDetail = (props) => {
                       Clothing worn for a special occasion or popular during a
                       specific period.
                     </div>
-                    <div class="m-t text-righ">
+                    <div className="m-t text-righ">
                       <Link className="btn btn-xs btn-outline btn-primary">
                         Info <i className="fa fa-long-arrow-right"></i>
                       </Link>

@@ -4,7 +4,7 @@ import Input from '../UI/Input';
 import pt from 'prop-types';
 
 
-const AddProductQuantity = (props) => {
+const AddProductQuantity = (props, onAddToCart) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
@@ -23,13 +23,13 @@ const AddProductQuantity = (props) => {
       return;
     }
 
-    props.onAddToCart(enteredAmountNumber);
+   onAddToCart(enteredAmountNumber);
   };
 
   return (
-    <form onSubmit={submitHandler} className="form">
+    <form onSubmit={submitHandler} className="form" title="form">
         <Input
-          
+          // data-testid="product-quantity"
           ref={amountInputRef}
           label='Quantity'
           input={{
@@ -43,14 +43,14 @@ const AddProductQuantity = (props) => {
           }}
         />
       <button className="cartButton">Add To Cart</button>
-      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      {!amountIsValid && <p data-testid="para">Please enter a valid amount (1-5).</p>}
     </form>
   );
 };
 
 AddProductQuantity.propTypes = {
-  onAddToCart : pt.func.isRequired,
-  id : pt.number.isRequired
+  onAddToCart : pt.func,
+  id : pt.number
 }
 
 export default AddProductQuantity;

@@ -11,8 +11,8 @@ const Input = React.forwardRef((props, ref) => {
   });
 
 Input.propTypes = {
-label : pt.element.isRequired,
-input : pt.element.isRequired
+label : pt.string,
+input : pt.object
 }
   
   export default Input;

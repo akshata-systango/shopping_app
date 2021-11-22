@@ -32,15 +32,17 @@ const ContactUsPage = () => {
     );
     setFeedbackSended(true);
     setsubmissionDone(true);
+    
   };
   return (
     <>
-      <div className="contactForm">
-        <form id="form">
+      <div className="contactForm" >
+        <form id="form" >
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
             <FormControl
-              // placeholder="Enter Your Name"
+            test-id="contact-form"
+              placeholder="Enter Your Name"
               aria-label="Username"
               aria-describedby="basic-addon1"
               ref={enterUsernameRef}
@@ -72,6 +74,8 @@ const ContactUsPage = () => {
             />
           </InputGroup>
           <Button
+          title="button"
+          data-testid="toggle"
             variant="outline-danger"
             className="btnsubmit"
             onClick={feedbackOrQuerySubmitHandler}

@@ -3,20 +3,16 @@ import CartContext from "../../store/CartContext";
 import Select from "react-select";
 import { useHistory } from "react-router-dom";
 
-
-const SearchComponent = ({setSearchedResult},props) => {
-const history  = useHistory()
-
+const SearchComponent = ({ setSearchedResult }) => {
+  const history = useHistory();
   const cartCtx = useContext(CartContext);
   const [Data, setFilterData] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-
-console.log('props', props)
   const onInputChange = (value) => {
-    console.log("value:- ", value);
+    // console.log("value:- ", value);
     setInputValue(value);
-    console.log("inputValue:- ", value);
+    // console.log("inputValue:- ", value);
     const FilteredData = cartCtx.products.filter((item) => {
       return item.detail?.toUpperCase().includes(value.toUpperCase());
     });
@@ -24,25 +20,27 @@ console.log('props', props)
   };
   const option = Data.map((item) => ({
     label: item.detail,
-    id:item.id,
+    id: item.id,
     value: `${item.detail} ${item.brand}`,
   }));
 
   const onChange = (value) => {
-    console.log("selected value is = ", value);
-    const searchedResult = Data.filter((item) =>
-      item.id === value.id
-    );
-    console.log("searched result is:-", searchedResult);
-    setSearchedResult(searchedResult)
+    // console.log("selected value is = ", value);
+    const searchedResult = Data.filter((item) => item.id === value.id);
+    // console.log("searched result is:-", searchedResult);
+    setSearchedResult(searchedResult);
     // ProductDetail(searchedResult);
     return history.push("/productDetail/" + value.id);
   };
 
   return (
     <>
-      <div>
+      <div title="searching">
         <Select
+          role="sele"
+          id="select-elements"
+          title="react-select"
+          data-testid="select"
           placeholder="Search..."
           isSearchable={true}
           onInputChange={onInputChange}

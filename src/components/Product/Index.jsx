@@ -1,15 +1,14 @@
 import React, { useState, useContext } from "react";
 import "./style/product.css";
 import Button from "../../shared/components/button/button";
-import Helper from "../../utils/Helper";
+import {Helper} from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
 import CartContext from "../../store/CartContext";
 
-const Products = (props) => {
+const Products = () => {
   const cartCtx = useContext(CartContext);
   const Product = cartCtx.products;
-  // setTimeout( () => console.log("lets check",Product.length), 3000);
-  const Buttoncategories = [
+ const Buttoncategories = [
     "All",
     "tshirt",
     "shirt",
@@ -50,9 +49,11 @@ const Products = (props) => {
   return (
     <div>
       <div className="flexContainer">
-        <p className="filters"> FILTERS: </p>
+        <p className="filters" data-testid="filteringCategory">
+          FILTERS:
+        </p>
         <div className="buttons">
-          <Button button={buttons} filter={filter} />
+          <Button button={buttons} filter={filter}  data-testid = "useState"/>
         </div>
         <label className="dropdown">
           <div className="dd-button">
@@ -71,18 +72,21 @@ const Products = (props) => {
           </ul>
         </label>
       </div>
-      <div className="displayCard">
+      <div className="displayCard" title="products">
         {mapData
-          ? Product.map((item) => (
-              <Card
-                imgsrc={item.imgsrc}
-                key={item.id}
-                id={item.id}
-                brand={item.brand}
-                category={item.category}
-                detail={item.detail}
-                price={item.price}
-              />
+          ? Product.map((item, index) => (
+              <div >
+                <Card
+                title="title3"
+                  imgsrc={item.imgsrc}
+                  key={item.id}
+                  id={item.id}
+                  brand={item.brand}
+                  category={item.category}
+                  detail={item.detail}
+                  price={item.price}
+                />
+              </div>
             ))
           : Helper(menudata, sortingOrder).map((item) => {
               return (
@@ -100,7 +104,11 @@ const Products = (props) => {
       </div>
       <div className="productCount">
         <p className="productStyling">All Products</p>
-        {count && <h6 className="pCount">({count} Product)</h6>}
+        {count && (
+          <h6 className="pCount" title="count">
+            ({count} Product)
+          </h6>
+        )}
       </div>
 
       <p className="gap"></p>

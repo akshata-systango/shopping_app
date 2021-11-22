@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import ProductSize from "../../../utils/Constant";
 import Input from "../button/Input";
 import pt from "prop-types";
+import {ToastContainer} from "react-toastify";
 
 const Card = (props) => {
   const cartCtx = useContext(CartContext);
@@ -50,8 +51,8 @@ const Card = (props) => {
       <div className="card" onMouseOver={onToggleHandler}>
         <div className="card-body">
           <img className="card-img-top" src={props.imgsrc} alt="Cant load" />
-          <h6 className="card-text">{props.brand}</h6>
-          <p className="category">{props.category}</p>
+          <h6 className="card-text" title="heading">{props.brand}</h6>
+          <p className="category" data-testid="para">{props.category}</p>
           <p className="card-title title1">{props.detail}</p>
           <p className="card-title">${props.price}</p>
 
@@ -69,6 +70,7 @@ const Card = (props) => {
                   <p>Select size</p>
                   <div className="size">
                     <Input
+                    role="input"
                       type="button"
                       id="size"
                       value={ProductSize[0]}
@@ -107,20 +109,22 @@ const Card = (props) => {
                 </div>
               )}
               <div className="availabilityMessage">Sizes: XS,S,M,L,XL,XXL</div>
+              
             </div>
           )}
         </div>
+        <ToastContainer title="tostify"/>
       </div>
     </React.Fragment>
   );
 };
 Card.propTypes = {
   id: pt.string,
-  brand: pt.string.isRequired,
+  brand: pt.string,
   size: pt.number,
   amount: pt.number,
-  detail: pt.string.isRequired,
-  category: pt.string.isRequired,
-  price: pt.number.isRequired,
+  detail: pt.string,
+  category: pt.string,
+  price: pt.number,
 };
 export default Card;
