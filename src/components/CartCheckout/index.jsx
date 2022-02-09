@@ -6,6 +6,7 @@ const isEmpty = (value) => value.trim() === "";
 const isSixChars = (value) => value.trim().length === 6;
 
 const Checkout = (props) => {
+  const {onConfirm, onCancel} = props
   const [formInputsValidity, setFormInputsValidity] = useState({
     name: "",
     street: "",
@@ -48,7 +49,7 @@ const Checkout = (props) => {
       return;
     }
 
-    props.onConfirm({
+    onConfirm({
       name: enteredName,
       street: enteredStreet,
       city: enteredCity,
@@ -94,7 +95,7 @@ const Checkout = (props) => {
         {!formInputsValidity.city && <p>Please enter a valid city!</p>}
       </div>
       <div className={classes.actions}>
-        <button type="button" onClick={props.onCancel}>
+        <button type="button" onClick={onCancel}>
           Cancel
         </button>
         <button className={classes.submit}>Confirm</button>
@@ -105,6 +106,6 @@ const Checkout = (props) => {
 
 Checkout.propTypes = {
   onConfirm: pt.func,
-  onCancel: pt.bool,
+  onCancel: pt.func,
 };
 export default Checkout;

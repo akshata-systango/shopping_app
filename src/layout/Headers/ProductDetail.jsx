@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import ReactTooltip from "react-tooltip";
 import CartContext from "../../store/CartContext";
+import axios from "axios";
 
 const ProductDetail = (props) => {
   const cartCtx = useContext(CartContext);
   const [allProduct, setAllProduct] = useState([]);
+  const [isMounted, setIsMounted] = useState(true)
   const { searchedResult } = props;
   const [disable, setDisable] = useState(true);
   const [size, setSize] = useState();
@@ -46,7 +48,7 @@ const ProductDetail = (props) => {
       setAllProduct(fetchProducts);
     };
     fetchProducts();
-  }, []);
+  });
   // console.log("products = ", allProduct);
   const SearchedProduct = allProduct.filter((item) => item.id === data);
   // console.log("search porduct is:-",SearchedProduct)
@@ -77,7 +79,7 @@ const ProductDetail = (props) => {
   const relatedProduct = allProduct.filter((item) => {
     return item.brand === matchedBrand.toString();
   });
-  // console.log("related products are:-", relatedProduct);
+  // console.log("related products are:-", SearchedProduct);
 
   const AddReview = async (event) => {
     event.preventDefault();
@@ -93,22 +95,22 @@ const ProductDetail = (props) => {
     alert("Review added successfully");
     document.getElementById("form").reset();
     // console.log("list is", newValues);
-    await fetch(
+    await axios.post(
       `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`,
       {
-        method: "POST",
-        body: JSON.stringify({
           name: enteredName,
           message: enteredReview,
-        }),
       }
     );
+    setIsMounted(false);
   };
   useEffect(() => {
     const fetchProducts = async () => {
+      setIsMounted(true)
       const response = await fetch(
         `https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes/${data}/review.json`
       );
+    setIsMounted(false);
       const responseData = await response.json();
       // console.log("responsedata", responseData);
       if (!responseData) return;
@@ -132,12 +134,14 @@ const ProductDetail = (props) => {
     { value: ProductSize[3], onclick: { showAddToCartButton }, label: 42 },
     { value: ProductSize[4], onclick: { showAddToCartButton }, label: 44 },
   ];
-
+  console.log(isMounted)
+// console.log("139", SearchedProduct)
   return (
     <>
       <div className="col-sm-12 col-md-12 col-lg-12">
         {SearchedProduct.map((item, index) => (
           <div
+          key={index}
             className="product-content product-wrap clearfix product-deatil"
             data-testId={`productSearching-${index}`}
           >
@@ -200,6 +204,7 @@ const ProductDetail = (props) => {
                 <div>
                   <Select
                     options={option}
+                    data-testid="size"
                     onChange={() => setDisable(false)}
                     className="sizeSelection"
                     placeholder="Select Size"
@@ -416,7 +421,11 @@ const ProductDetail = (props) => {
                     data-tip
                     data-for="registerTip"
                   >
-                    <button className="btn btn-light btn-lg" disabled={disable}>
+                    <button
+                      className="btn btn-light btn-lg"
+                      disabled={disable}
+                      data-testid="addToCart"
+                    >
                       <AddProductQuantity
                         id={item.id}
                         onAddToCart={AddToCartHandler}
@@ -448,7 +457,7 @@ const ProductDetail = (props) => {
         <p className="fontDec" role="paragraph">
           More Results are
           <svg
-          data-testid="svgele"
+            data-testid="svgele"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"

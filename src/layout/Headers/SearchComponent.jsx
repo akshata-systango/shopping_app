@@ -10,9 +10,7 @@ const SearchComponent = ({ setSearchedResult }) => {
   const [inputValue, setInputValue] = useState("");
 
   const onInputChange = (value) => {
-    // console.log("value:- ", value);
     setInputValue(value);
-    // console.log("inputValue:- ", value);
     const FilteredData = cartCtx.products.filter((item) => {
       return item.detail?.toUpperCase().includes(value.toUpperCase());
     });
@@ -25,22 +23,18 @@ const SearchComponent = ({ setSearchedResult }) => {
   }));
 
   const onChange = (value) => {
-    // console.log("selected value is = ", value);
     const searchedResult = Data.filter((item) => item.id === value.id);
-    // console.log("searched result is:-", searchedResult);
     setSearchedResult(searchedResult);
-    // ProductDetail(searchedResult);
     return history.push("/productDetail/" + value.id);
   };
 
   return (
-    <>
+    <><form data-testid="select">
+
       <div title="searching">
         <Select
-          role="sele"
           id="select-elements"
           title="react-select"
-          data-testid="select"
           placeholder="Search..."
           isSearchable={true}
           onInputChange={onInputChange}
@@ -50,6 +44,7 @@ const SearchComponent = ({ setSearchedResult }) => {
           closeMenuOnSelect={true}
         />
       </div>
+      </form>
     </>
   );
 };

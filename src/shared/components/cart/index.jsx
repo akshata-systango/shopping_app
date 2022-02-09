@@ -5,8 +5,10 @@ import CartItems from "./CartItem";
 import CartContext from "../../../store/CartContext";
 import CheckOutDetailForm from "../../../components/CartCheckout";
 import pt from "prop-types";
+import axios from "axios";
 
 const Cart = (props) => {
+  const {onClose} = props
   const cartCtx = useContext(CartContext);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
@@ -34,14 +36,11 @@ const Cart = (props) => {
 
   const SubmitOrderHandler = async (userData) => {
     setOrderSubmitted(true);
-    await fetch(
+    await axios.post(
       "https://shopping-app-5c89b-default-rtdb.firebaseio.com/orderDetail.json",
       {
-        method: "POST",
-        body: JSON.stringify({
           user: userData,
           orderItems: cartCtx.items,
-        }),
       }
     );
     setOrderSubmitted(false);
@@ -70,7 +69,7 @@ const Cart = (props) => {
 
   const hideButtons = (
     <div className="actions">
-      <button className="button--alt" onClick={props.onClose}>
+      <button className="button--alt" onClick={onClose}>
         Close
       </button>
 
@@ -95,7 +94,7 @@ const Cart = (props) => {
         {orderPlaced && (
           <CheckOutDetailForm
             onConfirm={SubmitOrderHandler}
-            onCancel={props.onClose}
+            onCancel={onClose}
           />
         )}
 
@@ -108,7 +107,7 @@ const Cart = (props) => {
     <React.Fragment>
       <p>Order Submitted Successfully....</p>
       <div className="actions">
-        <button className="button" onClick={props.onClose}>
+        <button className="button" onClick={onClose}>
           Close
         </button>
       </div>
@@ -116,7 +115,7 @@ const Cart = (props) => {
   );
 
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={onClose}>
       {!orderSubmitted && !isSuccessful && cartModal}
       {orderSubmitted && submittingModelData}
       {!orderSubmitted && isSuccessful && dataSubmissionMessage}
@@ -125,6 +124,6 @@ const Cart = (props) => {
 };
 
 Cart.propTypes = {
-  onClose: pt.bool,
+  onClose: pt.func,
 };
 export default Cart;

@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useState } from "react";
 import CartContext from "./CartContext";
 import pt from "prop-types";
+import axios from "axios";
 
 const defaultCartState = {
   items: [],
@@ -82,27 +83,24 @@ const CartProvider = (props) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch(
+      const response = await axios.get(
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/clothes.json"
       );
-      const responseData = await response.json()
-      // console.log("Response data is:-",responseData)
       const fetchProducts = [];
-      Object.keys(responseData).map((item) => {
+      Object.keys(response.data).map((item) => {
         return fetchProducts.push({
           id: item,
-          imgsrc: responseData[item].imgsrc,
-          brand: responseData[item].brand,
-          category: responseData[item].category,
-          detail: responseData[item].detail,
-          price: responseData[item].price,
+          imgsrc: response.data[item].imgsrc,
+          brand: response.data[item].brand,
+          category: response.data[item].category,
+          detail: response.data[item].detail,
+          price: response.data[item].price,
         });
       });
       setProduct(fetchProducts)
     };
     fetchProducts();
   },[]);
-  // console.log("Tesing in cartProvider, data coming from firebase", products);
 
   const cartContext = {
     items: cartState.items,

@@ -16,4 +16,20 @@ export  function Helper(ProductArray, sortingType) {
   return ProductArray;
 }
 
+// export const setupServerResponseForPostStep = (props) => {
+//   const {
+//     json,
+//     stepName,
+//     statusCode = 200
+//   } = props
+
+//   server.use(
+//     rest.post(config.apiURL + `https://shopping-app-5c89b-default-rtdb.firebaseio.com/${stepName}`, (req, res, ctx) => {
+//       return res(
+//         ctx.status(statusCode),
+//         ctx.json(json)
+//       )
+//     })
+//   )
+// }
 

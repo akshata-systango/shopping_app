@@ -109,7 +109,7 @@ const Card = (props) => {
                 </div>
               )}
               <div className="availabilityMessage">Sizes: XS,S,M,L,XL,XXL</div>
-              
+
             </div>
           )}
         </div>

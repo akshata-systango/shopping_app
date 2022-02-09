@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./style/Header.css";
 import { Button, InputGroup, FormControl } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+const axios = require("axios").default;
 
 const ContactUsPage = () => {
   const [feedbackSended, setFeedbackSended] = useState(false);
@@ -16,33 +18,34 @@ const ContactUsPage = () => {
     const enteredEmail = enterEmailRef.current.value;
     const enteredPhone = enterPhoneRef.current.value;
     const enteredMessage = enterMessageRef.current.value;
-    await fetch(
-      "https://shopping-app-5c89b-default-rtdb.firebaseio.com/feedback.json",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          user: {
-            name: enteredUsername,
-            email: enteredEmail,
-            phone: enteredPhone,
-            message: enteredMessage,
-          },
-        }),
-      }
-    );
+
+    axios
+      .post(
+        "https://shopping-app-5c89b-default-rtdb.firebaseio.com/feedback.json",
+        {
+          name: enteredUsername,
+          email: enteredEmail,
+          phone: enteredPhone,
+          message: enteredMessage,
+        }
+      )
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+
     setFeedbackSended(true);
     setsubmissionDone(true);
-    
   };
   return (
     <>
-      <div className="contactForm" >
-        <form id="form" >
+      <div className="contactForm">
+        <form id="form">
           <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
             <FormControl
-            test-id="contact-form"
-              placeholder="Enter Your Name"
               aria-label="Username"
               aria-describedby="basic-addon1"
               ref={enterUsernameRef}
@@ -50,32 +53,22 @@ const ContactUsPage = () => {
           </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Text>Email</InputGroup.Text>
-            <FormControl
-              // placeholder="Enter Your Email"
-              aria-label="First name"
-              ref={enterEmailRef}
-            />
+            <FormControl aria-label="Email" ref={enterEmailRef} />
           </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Text>Phone</InputGroup.Text>
-            <FormControl
-              // placeholder="Enter Your Contact Number"
-              aria-label="First name"
-              ref={enterPhoneRef}
-            />
+            <FormControl aria-label="Phone" ref={enterPhoneRef} />
           </InputGroup>
           <InputGroup>
             <InputGroup.Text>Message</InputGroup.Text>
             <FormControl
-              // placeholder="Enter Your Feedback"
               as="textarea"
-              aria-label="With textarea"
+              aria-label="Message"
               ref={enterMessageRef}
             />
           </InputGroup>
           <Button
-          title="button"
-          data-testid="toggle"
+            title="button"
             variant="outline-danger"
             className="btnsubmit"
             onClick={feedbackOrQuerySubmitHandler}
@@ -83,8 +76,9 @@ const ContactUsPage = () => {
             Submit
           </Button>
         </form>
+        {/* <Link to="/mydocument">Open a PDF</Link> */}
       </div>
-      {feedbackSended && alert("Your Feedback Sended successfully!")}
+      {feedbackSended && <p>"Your Feedback Sended successfully!</p>}
       {submissionDone && document.getElementById("form").reset()}
     </>
   );

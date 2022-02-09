@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Suspense } from "react";
 import Header from "../layout/Headers/Index";
 import Cart from "../shared/components/cart";
+import MyDocument from "../layout/Headers/MyDocument";
 
 
 const ProductDetail = React.lazy(() =>
@@ -49,6 +50,7 @@ const Routes = () => {
               <ProductDetail {...props} searchedResult={searchedResult} />
             )}
           />
+          <Route path="/mydocument" component={MyDocument} />
         </Suspense>
       </Switch>
     </>

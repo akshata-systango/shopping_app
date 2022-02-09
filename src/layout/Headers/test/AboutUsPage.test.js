@@ -17,6 +17,9 @@ describe("testing for about us page", () => {
       container.remove();
       container = null;
     });
+    test("AboutUsPage component should exist", () => {
+      expect(AboutUsPage).toBeDefined();
+  })
 
     test("should render 'who we are' as text" , () =>{
         render(<AboutUsPage/>);

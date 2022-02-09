@@ -10,10 +10,10 @@ import CartContext from "../../store/CartContext";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import SearchComponent from "./SearchComponent";
+import DarkMode from "./Darkmode";
 
 const Header = (props) => {
   const [showInput, setShowInput] = useState(false);
- 
 
   const searchHandler = () => {
     setShowInput(true);
@@ -24,7 +24,7 @@ const Header = (props) => {
   const InstallButtonHandler = () => {
     <Link to="/newPage" />;
   };
-  
+
   // cartImage and counting the items
   const cartCtx = useContext(CartContext);
   const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
@@ -35,7 +35,11 @@ const Header = (props) => {
     <React.Fragment>
       <div className="w3-row">
         <div className="w3-third w3-container">
-          <img src={systangoLogo} alt="can't load" className="sysImage" role="img" />
+          <img
+            src={systangoLogo}
+            alt="can't load"
+            className="sysImage"
+          />
         </div>
         <div className="w3-third w3-container">
           <div>
@@ -70,9 +74,10 @@ const Header = (props) => {
                   <img src={cartImage} alt="can't load" />
                 </Badge>
               </IconButton>
-              
             </div>
+
           </div>
+          <div><DarkMode/></div>
           {/* user profile section*/}
           <div className="vector">
             <div className="userProfile">
@@ -83,10 +88,14 @@ const Header = (props) => {
           </div>
 
           {/* searching item */}
-          <div className="vector2" >
+          <div className="vector2">
             <img src={searchImage} onClick={searchHandler} alt="can't load" />
             {showInput && (
-              <div className="searchInput" id="search" onClick={props.onSearchedIconClick} role="div">
+              <div
+                className="searchInput"
+                id="search"
+                onClick={props.onSearchedIconClick}
+              >
                 <SearchComponent setSearchedResult={props.setSearchedResult} />
               </div>
             )}

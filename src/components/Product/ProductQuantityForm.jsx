@@ -4,7 +4,9 @@ import Input from '../UI/Input';
 import pt from 'prop-types';
 
 
-const AddProductQuantity = (props, onAddToCart) => {
+const AddProductQuantity = (props) => {
+  console.log('props', props)
+  const {id, onAddToCart} = props
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
@@ -29,11 +31,10 @@ const AddProductQuantity = (props, onAddToCart) => {
   return (
     <form onSubmit={submitHandler} className="form" title="form">
         <Input
-          // data-testid="product-quantity"
           ref={amountInputRef}
           label='Quantity'
           input={{
-            id: 'amount_' + props.id,
+            id: 'amount_' + id,
             type: 'number',
             min: '1',
             max: '5',

@@ -11,7 +11,7 @@ const UserAuthentication = () => {
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
-    
+
   };
 
   const submitHandler = (event) => {
@@ -19,8 +19,6 @@ const UserAuthentication = () => {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-
-    // optional: Add validation
 
     setIsLoading(true);
     let url;
@@ -49,10 +47,6 @@ const UserAuthentication = () => {
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication failed!";
-            // if (data && data.error && data.error.message) {
-            //   errorMessage = data.error.message;
-            // }
-
             throw new Error(errorMessage);
           });
         }
@@ -83,7 +77,7 @@ const UserAuthentication = () => {
               ref={emailInputRef}
             />
             </InputGroup>
-            
+
             <div>
             <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
@@ -99,7 +93,7 @@ const UserAuthentication = () => {
           </div>
           <div className="text-center">
             {!isLoading && (
-              <Button variant="outline-danger" className="buttonss" data-testid="login-button" >
+              <Button variant="outline-danger" className="buttonss" >
                 {isLogin ? "Login" : "Create Account"}
               </Button>
             )}

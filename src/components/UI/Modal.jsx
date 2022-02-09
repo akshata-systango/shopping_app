@@ -4,7 +4,8 @@ import pt from 'prop-types';
 import './style/Modal.css';
 
 const Backdrop = (props) => {
-    return <div className='backdrop' onClick={props.onClose}></div>
+    const {onClose} = props
+    return <div className='backdrop' onClick={onClose}></div>
 
 }
 
@@ -18,18 +19,18 @@ const ModalOverlay = (props) => {
 const portalElement = document.getElementById('overlays');
 
 const Modal = (props) => {
-    // console.log("child" , props.children)
+    const {onClose, children} = props
     return <Fragment>
         <div className="cartStyle">
-            {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
-            {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}
+            {ReactDOM.createPortal(<Backdrop onClose={onClose} />, portalElement)}
+            {ReactDOM.createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
         </div>
     </Fragment>
 }
 
 Modal.propTypes = {
-    onClose : pt.bool,
+    onClose : pt.func,
     children :pt.array
-    
+
 }
 export default Modal;

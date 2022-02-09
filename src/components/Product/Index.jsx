@@ -79,7 +79,7 @@ const Products = () => {
                 <Card
                 title="title3"
                   imgsrc={item.imgsrc}
-                  key={item.id}
+                  key={index}
                   id={item.id}
                   brand={item.brand}
                   category={item.category}
@@ -88,11 +88,11 @@ const Products = () => {
                 />
               </div>
             ))
-          : Helper(menudata, sortingOrder).map((item) => {
+          : Helper(menudata, sortingOrder).map((item, index) => {
               return (
                 <Card
                   imgsrc={item.imgsrc}
-                  key={item.id}
+                  key={index}
                   id={item.id}
                   brand={item.brand}
                   category={item.category}

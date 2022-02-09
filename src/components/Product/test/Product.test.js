@@ -18,7 +18,10 @@ describe("Testing Product Component", () => {
     container.remove();
     container = null;
   });
-  
+
+  test("Products component should exist", () => {
+    expect(Products).toBeDefined();
+})
 
   test("render all products as text", () => {
     //Arrange

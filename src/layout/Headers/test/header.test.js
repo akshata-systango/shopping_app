@@ -26,6 +26,11 @@ describe("testing header component", () => {
         container.remove();
         container = null;
     });
+
+    test("Header component should exist", () => {
+        expect(Header).toBeDefined();
+    })
+    
     test("Should have an image tag", () => {
         render(<MockHeader />)
         const imageElement = screen.getAllByAltText("can't load");
