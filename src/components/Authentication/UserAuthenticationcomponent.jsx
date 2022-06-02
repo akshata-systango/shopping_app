@@ -1,25 +1,24 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./style/userAuthForm.css";
 import { Button, InputGroup, FormControl } from "react-bootstrap";
 
 const UserAuthentication = () => {
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [loginDetail, setLoginDetail] = useState({})
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleChange = (event) => {
+    event.persist();
+    const {name, value} = event.target;
+    setLoginDetail({...loginDetail, [name]: value});
+  }
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
-
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const enteredEmail = emailInputRef.current.value;
-    const enteredPassword = passwordInputRef.current.value;
-
     setIsLoading(true);
     let url;
     if (isLogin) {
@@ -32,8 +31,8 @@ const UserAuthentication = () => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
-        email: enteredEmail,
-        password: enteredPassword,
+        email: loginDetail.email,
+        password: loginDetail.password,
         returnSecureToken: true,
       }),
       headers: {
@@ -62,42 +61,47 @@ const UserAuthentication = () => {
   return (
     <>
       <div className="authform">
-        <p className="h5 text-center mb-4" role="paragraph">{isLogin ? "Login" : "Sign Up"}</p>
+        <p className="h5 text-center mb-4" role="paragraph">
+          {isLogin ? "Login" : "Sign Up"}
+        </p>
 
         <form onSubmit={submitHandler}>
           <div className="grey-text">
-
             <InputGroup className="mb-3">
-            <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
-            <FormControl
-            type="input"
-              placeholder="enter email"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              ref={emailInputRef}
-            />
+              <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
+              <FormControl
+                type="email"
+                name="email"
+                value={loginDetail.email || ''}
+                placeholder="enter email"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                onChange={handleChange}
+              />
             </InputGroup>
 
             <div>
-            <InputGroup className="mb-3">
-            <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
-            <FormControl
-            type="input"
-              placeholder="enter password"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              ref={passwordInputRef}
-            />
-            </InputGroup>
+              <InputGroup className="mb-3">
+                <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
+                <FormControl
+                  type="password"
+                  name="password"
+                  placeholder="enter password"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  value={loginDetail.password || ''}
+                  onChange={handleChange}
+                />
+              </InputGroup>
             </div>
           </div>
           <div className="text-center">
             {!isLoading && (
-              <Button variant="outline-danger" className="buttonss" >
+              <Button variant="outline-danger" className="buttonss">
                 {isLogin ? "Login" : "Create Account"}
               </Button>
             )}
-            {isLoading && <p >Sending request...</p>}
+            {isLoading && <p>Sending request...</p>}
             <Button
               variant="outline-danger"
               className="buttonss"

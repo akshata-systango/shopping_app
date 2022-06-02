@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import "./style/product.css";
 import Button from "../../shared/components/button/button";
-import {Helper} from "../../utils/Helper";
+import { Helper } from "../../utils/Helper";
 import Card from "../../shared/components/ProductCard/Index";
 import CartContext from "../../store/CartContext";
 
 const Products = () => {
   const cartCtx = useContext(CartContext);
   const Product = cartCtx.products;
- const Buttoncategories = [
+  const Buttoncategories = [
     "All",
     "tshirt",
     "shirt",
@@ -53,7 +53,7 @@ const Products = () => {
           FILTERS:
         </p>
         <div className="buttons">
-          <Button button={buttons} filter={filter}  data-testid = "useState"/>
+          <Button button={buttons} filter={filter} data-testid="useState" />
         </div>
         <label className="dropdown">
           <div className="dd-button">
@@ -75,11 +75,10 @@ const Products = () => {
       <div className="displayCard" title="products">
         {mapData
           ? Product.map((item, index) => (
-              <div >
+              <div key={index}>
                 <Card
-                title="title3"
+                  title="title3"
                   imgsrc={item.imgsrc}
-                  key={index}
                   id={item.id}
                   brand={item.brand}
                   category={item.category}

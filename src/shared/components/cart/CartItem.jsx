@@ -2,6 +2,7 @@ import "./style/cart.css";
 import pt from 'prop-types';
 
 const CartItems = (props) => {
+  console.log("propss", props);
   const price = `$${props.price?.toFixed(2)}`;
   return (
     <li className="cart-item">

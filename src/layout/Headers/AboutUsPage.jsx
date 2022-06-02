@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 const AboutUsPage = () => {
   return (
     <div className="aboutpage">
@@ -8,7 +7,7 @@ const AboutUsPage = () => {
         <Row>
           <Col sm={8}>
             <h1 className="aboutheading">Who we are</h1>
-            <p title="para"> 
+            <p title="para">
               Massa ultricies mi quis hendrerit dolor magna eget est. Lacinia at
               quis risus sed vulputate odio ut enim blandit. Auctor elit sed
               vulputate mi sit. Massa tincidunt dui ut ornare lectus. Turpis

@@ -50,7 +50,7 @@ const AddProductQuantity = (props) => {
 
 AddProductQuantity.propTypes = {
   onAddToCart : pt.func,
-  id : pt.number
+  id : pt.string
 }
 
 export default AddProductQuantity;

@@ -1,25 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "name" : "Shopping App",
+  "short_name" : "Shopping_App",
+  "start_url" : "/index.html",
+  "description": "This app is all about shopping for mans clothing.",
+  "display" : "standalone",
+  "scope": "/",
+  "background_color" : "#FFE902",
+  "orientation": "portrait-primary",
+  "theme_color" : "#FFE1C4",
+  "icons" : [
+      {
+          "src": "/src/assets/images/Rectangle.svg",
+          "type": "image/png",
+          "sizes": "144x144"
+      },
+      {
+          "src": "/src/assets/images/Vector.svg",
+          "type": "image/png"
+      },
+      {
+          "src": "/src/assets/images/Vector1.svg",
+          "type": "image/png"
+      },
+      {
+          "src": "/src/assets/images/Vector2.svg",
+          "type": "image/png"
+      }
+  ]
 }

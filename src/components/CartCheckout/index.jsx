@@ -1,104 +1,80 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import classes from "./style/checkoutForm.module.css";
 import pt from "prop-types";
 
-const isEmpty = (value) => value.trim() === "";
-const isSixChars = (value) => value.trim().length === 6;
-
 const Checkout = (props) => {
-  const {onConfirm, onCancel} = props
-  const [formInputsValidity, setFormInputsValidity] = useState({
-    name: "",
-    street: "",
-    city: "",
-    postalCode: "",
-  });
+  const { onConfirm, onCancel } = props;
+  const [userCheckoutDetail, setUserCheckoutDetail] = useState({});
 
-  const nameInputRef = useRef();
-  const streetInputRef = useRef();
-  const pinCodeInputRef = useRef();
-  const cityInputRef = useRef();
+  const handleChange = (event) => {
+    event.persist();
+    const { name, value } = event.target;
+    setUserCheckoutDetail({ ...userCheckoutDetail, [name]: value });
+  };
 
-  const confirmHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredName = nameInputRef.current.value;
-    const enteredStreet = streetInputRef.current.value;
-    const enteredPinCode = pinCodeInputRef.current.value;
-    const enteredCity = cityInputRef.current.value;
-
-    const enteredNameIsValid = !isEmpty(enteredName);
-    const enteredStreetIsValid = !isEmpty(enteredStreet);
-    const enteredCityIsValid = !isEmpty(enteredCity);
-    const enteredPinCodeIsValid = isSixChars(enteredPinCode);
-
-    setFormInputsValidity({
-      name: enteredNameIsValid,
-      street: enteredStreetIsValid,
-      city: enteredCityIsValid,
-      postalCode: enteredPinCodeIsValid,
-    });
-
-    const formIsValid =
-      enteredNameIsValid &&
-      enteredStreetIsValid &&
-      enteredCityIsValid &&
-      enteredPinCodeIsValid;
-
-    if (!formIsValid) {
-      return;
-    }
-
     onConfirm({
-      name: enteredName,
-      street: enteredStreet,
-      city: enteredCity,
-      postalCode: enteredPinCode,
+      name: userCheckoutDetail.name,
+      street: userCheckoutDetail.street,
+      city: userCheckoutDetail.city,
+      postalCode: userCheckoutDetail.postalCode,
     });
   };
 
-  const nameControlClasses = `${classes.control} ${
-    formInputsValidity.name ? "" : classes.invalid
-  }`;
-  const streetControlClasses = `${classes.control} ${
-    formInputsValidity.street ? "" : classes.invalid
-  }`;
-  const postalCodeControlClasses = `${classes.control} ${
-    formInputsValidity.postalCode ? "" : classes.invalid
-  }`;
-  const cityControlClasses = `${classes.control} ${
-    formInputsValidity.city ? "" : classes.invalid
-  }`;
-
   return (
-    <form className={classes.form} onSubmit={confirmHandler}>
-      <div className={nameControlClasses}>
+    <form className={classes.form}>
+      <div>
         <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" ref={nameInputRef} placeholder="Enter Your Name"/>
-        {!formInputsValidity.name && <p>Please enter a valid name!</p>}
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter Your Name"
+          onChange={handleChange}
+        />
       </div>
-      <div className={streetControlClasses}>
+      <div>
         <label htmlFor="street">Address</label>
-        <input type="text" id="street" ref={streetInputRef} placeholder="Enter Your Address"/>
-        {!formInputsValidity.street && <p>Please enter a valid street!</p>}
+        <input
+          type="text"
+          id="street"
+          name="street"
+          placeholder="Enter Your Address"
+          onChange={handleChange}
+        />
+
       </div>
-      <div className={postalCodeControlClasses}>
+      <div>
         <label htmlFor="postal">Pin Code</label>
-        <input type="text" id="postal" ref={pinCodeInputRef} placeholder="Enter Your postal-code"/>
-        {!formInputsValidity.pinCode && (
-          <p>Please enter a valid pin code (6 characters long)!</p>
-        )}
+        <input
+          type="text"
+          id="postal"
+          name="postalCode"
+          placeholder="Enter Your postal-code"
+          onChange={handleChange}
+        />
+
       </div>
-      <div className={cityControlClasses}>
+      <div>
         <label htmlFor="city">City</label>
-        <input type="text" id="city" ref={cityInputRef} placeholder="Enter Your City"/>
-        {!formInputsValidity.city && <p>Please enter a valid city!</p>}
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="Enter Your City"
+          onChange={handleChange}
+        />
+
       </div>
       <div className={classes.actions}>
         <button type="button" onClick={onCancel}>
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button className={classes.submit} onClick={submitHandler}>
+          Confirm
+        </button>
       </div>
     </form>
   );

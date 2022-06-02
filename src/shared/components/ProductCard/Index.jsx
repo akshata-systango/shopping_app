@@ -43,7 +43,6 @@ const Card = (props) => {
       category: props.category,
       price: props.price,
     });
-    console.log("size:- ", size);
   };
 
   return (

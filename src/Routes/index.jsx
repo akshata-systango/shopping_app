@@ -5,7 +5,6 @@ import Header from "../layout/Headers/Index";
 import Cart from "../shared/components/cart";
 import MyDocument from "../layout/Headers/MyDocument";
 
-
 const ProductDetail = React.lazy(() =>
   import("../layout/Headers/ProductDetail")
 );

@@ -5,18 +5,17 @@
   height: 50px;
   left: 18px;
   top: 10px;
-  
-  /* background: url(image.png); */
+
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.03));
   }
-  
+
   .ractangle1{
     position: absolute;
   width: 1440px;
   height: 70px;
   left: 0px;
   top: 0px;
-  
+
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.03);
   }
@@ -28,7 +27,7 @@
       justify-content: space-around;
       flex-direction: row;
       flex-wrap: wrap;
-     
+
   }
   .installButton{
       margin-top: 10px;
@@ -49,9 +48,9 @@
       font-size: 0.8rem;
       line-height: 16px;
       text-transform: capitalize;
-      
+
       color: black;
-      
+
   }
   .aboutUs{
     position: absolute;
@@ -59,7 +58,7 @@
   height: 16px;
   left: 540px;
   top: 27px;
-  
+
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -67,9 +66,9 @@
   line-height: 16px;
   text-decoration: none;
   text-transform: capitalize;
-  
+
   color:black;
-  
+
   }
   .ourStore{
     position: absolute;
@@ -77,14 +76,14 @@
   height: 16px;
   left: 620px;
   top: 27px;
-  
+
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 0.8rem;
   line-height: 16px;
   text-transform: capitalize;
-  
+
   color: black;
   }
   .contactUs{
@@ -93,7 +92,7 @@
   height: 16px;
   left: 690px;
   top: 27px;
-  
+
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -101,7 +100,7 @@
   line-height: 16px;
   text-transform: capitalize;
   text-decoration: none;
-  
+
   }
   .vector{
     position: absolute;
@@ -112,7 +111,7 @@
     border: none;
     height: 40px;
     /* background-color: white; */
-    
+
     /* background: #010202; */
   }
   .vector1{
@@ -124,11 +123,11 @@
     border: none;
     height: 40px;
     /* background-color: white; */
-    
+
     /* background: #010202; */
   }
   .vector2{
-  
+
     position: absolute;
     left: 86.5%;
     right: 10.07%;
@@ -137,10 +136,10 @@
     border: none;
     height: 40px;
     /* background-color: white; */
-    
+
     /* background: #010202; */
   }
-  
+
   .cartBtn{
     display: flex;
   }
@@ -157,30 +156,30 @@
     text-transform: capitalize;
     margin-right: 50px;
   }
-  
+
   /* cart item counter */
   .cart{
     display: flex;
   }
   .itemCount{
-   
+
         background-color: #b94517;
         padding: 0.1rem 0.3rem;
         border-radius: 25px;
         margin-left: 0.1rem;
         font-weight: bold;
         color: white;
-     
+
   }
   .ractangle{
-  
+
     position: absolute;
     width: 1440px;
     height: 53px;
     left: 0px;
     top: 75px;
     display: flex;
-    
+
     background: linear-gradient(90.06deg, #181716 0%, #ED4E08 99.97%);
   }
   .inviteLine{
@@ -195,9 +194,9 @@
   font-size: 16px;
   line-height: 19px;
   /* identical to box height */
-  
+
   text-transform: capitalize;
-  
+
   color: #FFFFFF;
   }
   .inviteNow{
@@ -206,27 +205,27 @@
     height: 20px;
     left: 1030px;
     top: 16px;
-    
+
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
     text-transform: capitalize;
-    
+
     color: #000000;
   }
-  
+
   .inviteNow{
     position: absolute;
     width: 94px;
     height: 29px;
     left: 1021px;
     /* top: 82px; */
-    
+
     background: #FFFFFF;
     border-radius: 20px;
-  } 
+  }
   .contact-form{
     margin-top: 200px;
     text-align: center;
@@ -238,7 +237,7 @@
   .form-group{
     display: flex;
     justify-content: space-around;
-    
+
   }
   .contactForm{
    align-items: center;
@@ -269,6 +268,6 @@
   .searchInput{
     height: 20px;
     width: 170px;
-  
+
   }
-  
+

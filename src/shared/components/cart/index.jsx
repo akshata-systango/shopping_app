@@ -35,6 +35,7 @@ const Cart = (props) => {
   };
 
   const SubmitOrderHandler = async (userData) => {
+    console.log("userData", userData)
     setOrderSubmitted(true);
     await axios.post(
       "https://shopping-app-5c89b-default-rtdb.firebaseio.com/orderDetail.json",
@@ -82,7 +83,7 @@ const Cart = (props) => {
   );
 
   const cartModal = (
-    <React.Fragment>
+    <>
       <div id="cartItem">{cartItem}</div>
 
       <div className="total">
@@ -100,18 +101,18 @@ const Cart = (props) => {
 
         {!orderPlaced && hideButtons}
       </div>
-    </React.Fragment>
+    </>
   );
   const submittingModelData = <p>Sending the data</p>;
   const dataSubmissionMessage = (
-    <React.Fragment>
+    <>
       <p>Order Submitted Successfully....</p>
       <div className="actions">
         <button className="button" onClick={onClose}>
           Close
         </button>
       </div>
-    </React.Fragment>
+    </>
   );
 
   return (
