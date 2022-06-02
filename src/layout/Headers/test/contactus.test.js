@@ -5,8 +5,7 @@ import React from "react";
 
 describe("testing contact us page:-", () => {
     beforeEach(() => {
-        const onClick= jest.fn()
-        render(<ContactUsPage onClick={onClick}/>)
+        render(<ContactUsPage />)
     });
 
     afterEach(() => {
@@ -22,25 +21,33 @@ describe("testing contact us page:-", () => {
         expect(input.length).toBe(4)
     })
     it("Should render submit button", () => {
-        const button = getByRole('button', {name: 'Submit'})
+        const { getByRole } = screen
+        const button = getByRole('button')
         expect(button).toBeInTheDocument()
     })
     it('Should render submit button', async () => {
-        const { getByRole, getAllByRole } = screen
-        const button = getByRole('button')
-        const input = getAllByRole('textbox')
+        const onClick= jest.fn()
+        const screen = render(<ContactUsPage onClick={onClick}/>)
 
-        expect(input.length).toBe(4)
-        expect(button).toBeInTheDocument()
+        const button = screen.getAllByRole('button')
+        const input = screen.getAllByRole('textbox')
 
-        fireEvent.change(input[0])
-        fireEvent.change(input[1])
-        fireEvent.change(input[2])
-        fireEvent.change(input[3])
-        fireEvent.click(button)
+        expect(input.length).toBe(8)
+        expect(button.length).toBe(2)
+
+        fireEvent.change(input[0], {name: 'name'}, {target: {value: 'Akshata'}})
+        fireEvent.change(input[1], {name: 'email'},{target: {value: 'amandloi@gmail.com'}})
+        fireEvent.change(input[2], {name: 'phone'},{target: {value: '1234567895'}})
+        fireEvent.change(input[3], {name: 'message'},{target: {value: 'This is a demo'}})
+        fireEvent.click(button[0])
 
         await waitFor(() => {
-            expect(onClick).toBeCalled()
+            expect(onClick).toHaveBeenCalledWith({
+                name:'Akshata',
+                email:'amandloi@gmail.com',
+                phone:'1234567895',
+                message:'This is a demo'
+            })
         })
     })
 

@@ -10,7 +10,6 @@ import CartContext from "../../store/CartContext";
 import Badge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import SearchComponent from "./SearchComponent";
-import DarkMode from "./Darkmode";
 
 const Header = (props) => {
   const [showInput, setShowInput] = useState(false);
@@ -77,7 +76,6 @@ const Header = (props) => {
             </div>
 
           </div>
-          <div><DarkMode/></div>
           {/* user profile section*/}
           <div className="vector">
             <div className="userProfile">

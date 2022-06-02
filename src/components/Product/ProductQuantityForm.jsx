@@ -5,7 +5,6 @@ import pt from 'prop-types';
 
 
 const AddProductQuantity = (props) => {
-  console.log('props', props)
   const {id, onAddToCart} = props
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();

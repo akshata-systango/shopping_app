@@ -4,7 +4,7 @@ import Checkout from "./index";
 
 describe("Cart checkout component integration test", () => {
   beforeEach(() => {
-    <Checkout />
+    render(<Checkout />);
   });
 
   afterEach(() => {
@@ -42,4 +42,5 @@ describe("Cart checkout component integration test", () => {
   //   fireEvent.click(confirmButtonElement)
   //   expect(confirmButtonElement).toBeInTheDocument()
   // })
+
 });

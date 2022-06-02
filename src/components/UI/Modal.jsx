@@ -6,14 +6,13 @@ import './style/Modal.css';
 const Backdrop = (props) => {
     const {onClose} = props
     return <div className='backdrop' onClick={onClose}></div>
-
 }
 
 const ModalOverlay = (props) => {
+    const {onClose} = props
     return <div className="content">
-        <div className="model">{props.children}</div>
+        <div className="model">{onClose}</div>
     </div>
-
 }
 
 const portalElement = document.getElementById('overlays');

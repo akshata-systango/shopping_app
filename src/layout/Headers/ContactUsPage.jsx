@@ -1,40 +1,38 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import "./style/Header.css";
-import { Button, InputGroup, FormControl } from "react-bootstrap";
-// import { Link } from "react-router-dom";
-const axios = require("axios").default;
+import "./style/contactUS.css";
+import axios from "axios";
 
 const ContactUsPage = () => {
   const [feedbackSended, setFeedbackSended] = useState(false);
   const [submissionDone, setsubmissionDone] = useState(false);
-  const enterUsernameRef = useRef();
-  const enterEmailRef = useRef();
-  const enterPhoneRef = useRef();
-  const enterMessageRef = useRef();
+  const [userData, setUserData] = useState({});
 
-  const feedbackOrQuerySubmitHandler = async (event) => {
+  const handleChange = (event) => {
+    event.persist();
+    const { name, value } = event.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const submitHandler = async (event) => {
     event.preventDefault();
-    const enteredUsername = enterUsernameRef.current.value;
-    const enteredEmail = enterEmailRef.current.value;
-    const enteredPhone = enterPhoneRef.current.value;
-    const enteredMessage = enterMessageRef.current.value;
-
+    console.log("userData", userData);
     axios
       .post(
         "https://shopping-app-5c89b-default-rtdb.firebaseio.com/feedback.json",
         {
-          name: enteredUsername,
-          email: enteredEmail,
-          phone: enteredPhone,
-          message: enteredMessage,
+          name: userData.username,
+          email: userData.email,
+          phone: userData.phone,
+          message: userData.message,
         }
       )
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     setFeedbackSended(true);
     setsubmissionDone(true);
@@ -43,42 +41,52 @@ const ContactUsPage = () => {
     <>
       <div className="contactForm">
         <form id="form">
-          <InputGroup className="mb-3">
-            <InputGroup.Text id="basic-addon1">Name</InputGroup.Text>
-            <FormControl
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              ref={enterUsernameRef}
-            />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <InputGroup.Text>Email</InputGroup.Text>
-            <FormControl aria-label="Email" ref={enterEmailRef} />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <InputGroup.Text>Phone</InputGroup.Text>
-            <FormControl aria-label="Phone" ref={enterPhoneRef} />
-          </InputGroup>
-          <InputGroup>
-            <InputGroup.Text>Message</InputGroup.Text>
-            <FormControl
-              as="textarea"
-              aria-label="Message"
-              ref={enterMessageRef}
-            />
-          </InputGroup>
-          <Button
-            title="button"
+          <label>Name</label>
+          <input
+            type="text"
+            aria-label="Username"
+            value={userData.username || ""}
+            name="username"
+            onChange={handleChange}
+          />
+
+          <label>Email</label>
+          <input
+            type="email"
+            aria-label="Email"
+            name="email"
+            value={userData.email || ""}
+            onChange={handleChange}
+          />
+
+          <label>Phone</label>
+          <input
+            type="text"
+            aria-label="Phone"
+            name="phone"
+            value={userData.phone || ""}
+            onChange={handleChange}
+          />
+
+          <label>Message</label>
+          <input
+            type="textarea"
+            name="message"
+            aria-label="Message"
+            value={userData.message || ""}
+            onChange={handleChange}
+          />
+
+          <button
             variant="outline-danger"
-            className="btnsubmit"
-            onClick={feedbackOrQuerySubmitHandler}
+            onClick={submitHandler}
+            className="button button3"
           >
             Submit
-          </Button>
+          </button>
         </form>
-        {/* <Link to="/mydocument">Open a PDF</Link> */}
       </div>
-      {feedbackSended && <p>"Your Feedback Sended successfully!</p>}
+      {feedbackSended && alert("Your Feedback Sended successfully!")}
       {submissionDone && document.getElementById("form").reset()}
     </>
   );
